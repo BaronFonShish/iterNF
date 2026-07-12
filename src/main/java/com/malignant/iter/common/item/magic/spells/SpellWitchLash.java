@@ -23,7 +23,7 @@ import java.util.List;
 public class SpellWitchLash extends SpellItem {
 
     public SpellWitchLash() {
-        super(new Properties(), "occult", "force", "decay",1, 8, 1, 8);
+        super(new Properties(), "occult", "force", "entropy",1, 8, 1, 8);
     }
 
     @Override

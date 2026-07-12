@@ -263,7 +263,7 @@ public abstract class SpellItem extends Item{
             case "earth" -> Pictograms.IA_EARTH;
             case "ether" -> Pictograms.IA_ETHER;
             case "life" -> Pictograms.IA_LIFE;
-            case "decay" -> Pictograms.IA_DECAY;
+            case "entropy" -> Pictograms.IA_ENTROPY;
 
 
             default -> Pictograms.IA_FIRE;
