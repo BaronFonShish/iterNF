@@ -1,0 +1,145 @@
+---- Minecraft Crash Report ----
+// I let you down. Sorry :(
+
+Time: 2026-05-04 00:27:06
+Description: Ticking player
+
+java.lang.UnsupportedOperationException: Payload iter:burnout may not be sent to the client!
+	at TRANSFORMER/neoforge@21.1.228/net.neoforged.neoforge.network.registration.NetworkRegistry.checkPacket(NetworkRegistry.java:446) ~[neoforge-21.1.228.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerCommonPacketListenerImpl.send(ServerCommonPacketListenerImpl.java:178) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerCommonPacketListenerImpl.send(ServerCommonPacketListenerImpl.java:173) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.1.228/net.neoforged.neoforge.common.extensions.IServerCommonPacketListenerExtension.send(IServerCommonPacketListenerExtension.java:24) ~[neoforge-21.1.228.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.variables.IterPlayerDataUtils.syncBurnoutToClient(IterPlayerDataUtils.java:147) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.variables.IterPlayerDataUtils.syncBurnout(IterPlayerDataUtils.java:158) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.variables.IterPlayerDataUtils.addBurnout(IterPlayerDataUtils.java:96) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.item.magic.defaults.SpellFocus.completeCast(SpellFocus.java:254) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.item.magic.defaults.SpellFocus.onUseTick(SpellFocus.java:239) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.item.ItemStack.onUseTick(ItemStack.java:1098) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.updateUsingItem(LivingEntity.java:3140) ~[neoforge-21.1.228.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:APP:curios.neoforge.mixins.json:MixinLivingEntity from mod curios,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerPlayer.updateUsingItem(ServerPlayer.java:2028) ~[neoforge-21.1.228.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.updatingUsingItem(LivingEntity.java:3129) ~[neoforge-21.1.228.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:APP:curios.neoforge.mixins.json:MixinLivingEntity from mod curios,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.tick(LivingEntity.java:2440) ~[neoforge-21.1.228.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:APP:curios.neoforge.mixins.json:MixinLivingEntity from mod curios,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.player.Player.tick(Player.java:284) ~[neoforge-21.1.228.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerPlayer.doTick(ServerPlayer.java:568) ~[neoforge-21.1.228.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerGamePacketListenerImpl.tick(ServerGamePacketListenerImpl.java:263) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.network.Connection.tick(Connection.java:421) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerConnectionListener.tick(ServerConnectionListener.java:174) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1060) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:926) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:113) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:710) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:267) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at TRANSFORMER/neoforge@21.1.228/net.neoforged.neoforge.network.registration.NetworkRegistry.checkPacket(NetworkRegistry.java:446) ~[neoforge-21.1.228.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerCommonPacketListenerImpl.send(ServerCommonPacketListenerImpl.java:178) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerCommonPacketListenerImpl.send(ServerCommonPacketListenerImpl.java:173) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.1.228/net.neoforged.neoforge.common.extensions.IServerCommonPacketListenerExtension.send(IServerCommonPacketListenerExtension.java:24) ~[neoforge-21.1.228.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.variables.IterPlayerDataUtils.syncBurnoutToClient(IterPlayerDataUtils.java:147) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.variables.IterPlayerDataUtils.syncBurnout(IterPlayerDataUtils.java:158) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.variables.IterPlayerDataUtils.addBurnout(IterPlayerDataUtils.java:96) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.item.magic.defaults.SpellFocus.completeCast(SpellFocus.java:254) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/iter@1.0/com.malignant.iter.common.item.magic.defaults.SpellFocus.onUseTick(SpellFocus.java:239) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.item.ItemStack.onUseTick(ItemStack.java:1098) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.updateUsingItem(LivingEntity.java:3140) ~[neoforge-21.1.228.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:APP:curios.neoforge.mixins.json:MixinLivingEntity from mod curios,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerPlayer.updateUsingItem(ServerPlayer.java:2028) ~[neoforge-21.1.228.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.updatingUsingItem(LivingEntity.java:3129) ~[neoforge-21.1.228.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:APP:curios.neoforge.mixins.json:MixinLivingEntity from mod curios,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.tick(LivingEntity.java:2440) ~[neoforge-21.1.228.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:APP:curios.neoforge.mixins.json:MixinLivingEntity from mod curios,pl:mixin:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.player.Player.tick(Player.java:284) ~[neoforge-21.1.228.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+-- Player being ticked --
+Details:
+	Entity Type: minecraft:player (net.minecraft.server.level.ServerPlayer)
+	Entity ID: 26
+	Entity Name: Dev
+	Entity's Exact location: -100.09, 72.00, -41.25
+	Entity's Block location: World: (-101,72,-42), Section: (at 11,8,6 in -7,4,-3; chunk contains blocks -112,-64,-48 to -97,319,-33), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,-64,-512 to -1,319,-1)
+	Entity's Momentum: 0.00, -0.08, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: null
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerPlayer.doTick(ServerPlayer.java:568) ~[neoforge-21.1.228.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerGamePacketListenerImpl.tick(ServerGamePacketListenerImpl.java:263) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.network.Connection.tick(Connection.java:421) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.network.ServerConnectionListener.tick(ServerConnectionListener.java:174) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:1060) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:926) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:113) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:710) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:267) ~[neoforge-21.1.228.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.1
+	Minecraft Version ID: 1.21.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 21.0.10, Microsoft
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Microsoft
+	Memory: 380169440 bytes (362 MiB) / 1010827264 bytes (964 MiB) up to 4185915392 bytes (3992 MiB)
+	CPUs: 12
+	Processor Vendor: GenuineIntel
+	Processor Name: 13th Gen Intel(R) Core(TM) i5-13420H
+	Identifier: Intel64 Family 6 Model 186 Stepping 2
+	Microarchitecture: Raptor Lake
+	Frequency (GHz): 2.61
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 12
+	Graphics card #0 name: Intel(R) UHD Graphics
+	Graphics card #0 vendor: Intel Corporation
+	Graphics card #0 VRAM (MiB): 2048.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 32.0.101.7085
+	Memory slot #0 capacity (MiB): 16384.00
+	Memory slot #0 clockSpeed (GHz): 5.60
+	Memory slot #0 type: Unknown
+	Virtual memory max (MiB): 22106.55
+	Virtual memory used (MiB): 15185.78
+	Swap memory total (MiB): 6144.00
+	Swap memory used (MiB): 406.18
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 319998.13, total: 487734.16
+	Space in storage for workdir (MiB): available: 319998.13, total: 487734.16
+	JVM Flags: 0 total; 
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/26, l='ServerLevel[New World]', x=-100.09, y=72.00, z=-41.25]]
+	Active Data Packs: vanilla, mod_data, mod/curios (incompatible), mod/iter, mod/neoforge
+	Available Data Packs: bundle, trade_rebalance, vanilla, mod/curios (incompatible), mod/iter, mod/neoforge, mod_data
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	World Seed: 4125134072204917203
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'neoforge'; Server brand changed to 'neoforge'
+	Launched Version: 21.1.228
+	ModLauncher: 11.0.5+main.901c6ea8
+	ModLauncher launch target: forgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-4.0.42.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.42.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.42.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.5.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.5.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		curios-neoforge-9.5.1+1.21.1.jar                  |Curios API                    |curios                        |9.5.1+1.21.1        |Manifest: NOSIGNATURE
+		main                                              |Iter                          |iter                          |1.0                 |Manifest: NOSIGNATURE
+		neoforge-21.1.228.jar                             |Minecraft                     |minecraft                     |1.21.1              |Manifest: NOSIGNATURE
+		neoforge-21.1.228.jar                             |NeoForge                      |neoforge                      |21.1.228            |Manifest: NOSIGNATURE
+	Crash Report UUID: e49b73c9-2a74-431e-a3f9-be2231129e09
+	FML: 4.0.42
+	NeoForge: 21.1.228

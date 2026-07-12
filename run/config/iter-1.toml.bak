@@ -1,0 +1,29 @@
+#Common configuration for Iter
+[common]
+
+	#World generation
+	[common.world_generation]
+		#Enable ancient vases generation
+		ancientVases = true
+		#Enable abyssquartz clusters generation
+		abyssQuartz = true
+		#Enable spider eggs generation
+		spiderEggs = true
+		#Enable etherblooms generation
+		etherBlooms = true
+		#Enable rotroots generation
+		rotroots = true
+
+	#Functions
+	[common.functions]
+		#Enable foci item damage from spellcasting
+		fociDurability = false
+		#Enable abyssquartz blocks growing new clusters
+		abyssquartzGrowth = true
+
+	#Mobs
+	[common.mobs]
+		#Enable Giant Spiders spawning
+		giantSpiders = true
+		#Enable Ghouls spawning
+		ghouls = true

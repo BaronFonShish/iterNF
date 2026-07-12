@@ -1,0 +1,35 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.iter.firepower"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "id": "iter:firepower",
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.05,
+          "per_level_above_first": 0.025
+        },
+        "attribute": "iter:ranged_damage",
+        "operation": "add_multiplied_base"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 10
+  },
+  "primary_items": "#iter:gun",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#iter:gun",
+  "weight": 5
+}

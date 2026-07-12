@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.malignant.iter.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "StaffSpellcastingInHandMixin",
+    "StaffSpellcastingMixin",
+    "TankardArmPoseMixin",
+    "TankardItemRotationMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

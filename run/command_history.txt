@@ -1,0 +1,50 @@
+/time set night
+/gamerule doDaylightCycle false
+/effect give Dev minecraft:night_vision infinite 0 true
+/place structure iter:simple_monster_room
+/place structure iter:small_generic_dungeon
+/place structure iter:generic_dungeon
+/effect give Dev minecraft:strength infinite 200 true
+/effect clear Dev
+/time set day
+/effect give Dev minecraft:night_vision infinite 0 true
+/tp Dev 0 100 0
+/difficulty peaceful
+/difficulty easy
+/difficulty peaceful
+/difficulty easy
+/difficulty peaceful
+/difficulty easy
+/tick rate 1
+/tick freeze
+/tick step 200t
+/tick sprint 200t
+/tick freeze
+/tick rate 20
+/tick rate 1
+/tick unfreeze
+/tick rate 20
+/tick sprint 200s
+/weather clear
+/tick freeze
+/tick step 1t
+/tick step 5t
+/tick step 1t
+/tick unfreeze
+/tick freeze
+/tick step 1t
+/tick step 2t
+/tick step 1t
+/tick unfreeze
+/tick freeze
+/tick rate 2
+/tick unfreeze
+/tick rate 20
+/tick rate 3
+/tick rate 2
+/tick rate 5
+/tick rate 20
+/tick rate 10
+/tick rate 20
+/summon iter:goblin
+/summon iter:hobgoblin
