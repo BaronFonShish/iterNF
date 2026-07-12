@@ -23,9 +23,8 @@ public class Pictograms {
     public static final char IA_AIR = '\uE00c';
     public static final char IA_ETHER = '\uE00d';
     public static final char IA_LIFE = '\uE00e';
-    public static final char IA_DECAY = '\uE00f';
+    public static final char IA_ENTROPY = '\uE00f';
 
-    // Fixed: Use ResourceLocation.parse() instead of constructor
     public static final ResourceLocation PICTOGRAM_FONT = ResourceLocation.parse(IterMod.MOD_ID + ":iter_pictograms");
 
     public static MutableComponent getIcon(char icon) {
