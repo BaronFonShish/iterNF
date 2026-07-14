@@ -91,9 +91,9 @@ public class ModCreativeTabEvents {
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.BOW), new ItemStack(ModItems.RECURVE_BOW.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.CROSSBOW), new ItemStack(ModItems.STINGER.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.RECURVE_BOW.get()), new ItemStack(ModItems.NETHERITE_WARBOW.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.NETHERITE_SWORD), new ItemStack(ModItems.GOBSTEEL_SWORD.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.NETHERITE_AXE), new ItemStack(ModItems.GOBSTEEL_AXE.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOBSTEEL_SWORD.get()), new ItemStack(ModItems.MAGMANUM_SWORD.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.STONE_SWORD), new ItemStack(ModItems.GOBSTEEL_SWORD.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.STONE_AXE), new ItemStack(ModItems.GOBSTEEL_AXE.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.NETHERITE_SWORD), new ItemStack(ModItems.MAGMANUM_SWORD.get())),
 
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.APPRENTICE_HOOD.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.APPRENTICE_HOOD.get()), new ItemStack(ModItems.APPRENTICE_ROBES.get())),
@@ -129,7 +129,7 @@ public class ModCreativeTabEvents {
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.IRON_RING_MAGMANUM.get()), new ItemStack(ModItems.GOLDEN_RING_MAGMANUM.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOLDEN_RING_MAGMANUM.get()), new ItemStack(ModItems.NETHERITE_RING_MAGMANUM.get())),
 
-                new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(Items.NETHERITE_HOE), new ItemStack(ModItems.GOBSTEEL_SHOVEL.get())),
+                new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(Items.STONE_HOE), new ItemStack(ModItems.GOBSTEEL_SHOVEL.get())),
                 new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(ModItems.GOBSTEEL_SHOVEL.get()), new ItemStack(ModItems.GOBSTEEL_PICKAXE.get())),
                 new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(ModItems.GOBSTEEL_PICKAXE.get()), new ItemStack(ModItems.GOBSTEEL_AXE.get())),
                 new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(ModItems.GOBSTEEL_AXE.get()), new ItemStack(ModItems.GOBSTEEL_HOE.get())),
