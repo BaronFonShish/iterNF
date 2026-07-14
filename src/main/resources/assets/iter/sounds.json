@@ -1,43 +1,42 @@
 {
   "etherbolt_impact": {
-    "subtitles": "sounds.iter.etherbolt_impact",
+    "subtitles": "subtitles.iter.etherbolt_impact",
     "sounds": [
       "iter:etherbolt_impact_1",
       "iter:etherbolt_impact_2"
     ]
   },
   "start_casting": {
-    "subtitles": "sounds.iter.start_casting",
+    "subtitles": "subtitles.iter.start_casting",
     "sounds": [
       "iter:start_casting"
     ]
   },
   "cast_arcane": {
-    "subtitles": "sounds.iter.cast_arcane",
+    "subtitles": "subtitles.iter.cast_arcane",
     "sounds": [
       "iter:cast_arcane_1",
       "iter:cast_arcane_2"
     ]
   },
   "cast_occult": {
-    "subtitles": "sounds.iter.cast_occult",
+    "subtitles": "subtitles.iter.cast_occult",
     "sounds": [
       "iter:cast_occult_1",
       "iter:cast_occult_2"
     ]
   },
   "goblin_ambient": {
-    "subtitles": "sounds.iter.goblin_ambient",
+    "subtitles": "subtitles.iter.goblin_ambient",
     "sounds": [
       "iter:goblin_ambient_1",
       "iter:goblin_ambient_2",
       "iter:goblin_ambient_3",
-      "iter:goblin_ambient_4",
-      "iter:goblin_ambient_5"
+      "iter:goblin_ambient_4"
     ]
   },
   "goblin_hurt": {
-    "subtitles": "sounds.iter.goblin_hurt",
+    "subtitles": "subtitles.iter.goblin_hurt",
     "sounds": [
       "iter:goblin_hurt_1",
       "iter:goblin_hurt_2",
@@ -46,13 +45,44 @@
     ]
   },
   "goblin_death": {
-    "subtitles": "sounds.iter.goblin_death",
+    "subtitles": "subtitles.iter.goblin_death",
     "sounds": [
       "iter:goblin_death"
     ]
   },
+  "hobgoblin_ambient": {
+    "subtitles": "subtitles.iter.hobgoblin_ambient",
+    "sounds": [
+      "iter:hobgoblin_ambient_1",
+      "iter:hobgoblin_ambient_2",
+      "iter:hobgoblin_ambient_3",
+      "iter:hobgoblin_ambient_4"
+    ]
+  },
+  "hobgoblin_hurt": {
+    "subtitles": "subtitles.iter.hobgoblin_hurt",
+    "sounds": [
+      "iter:hobgoblin_hurt_1",
+      "iter:hobgoblin_hurt_2",
+      "iter:hobgoblin_hurt_3"
+    ]
+  },
+  "hobgoblin_death": {
+    "subtitles": "subtitles.iter.hobgoblin_death",
+    "sounds": [
+      "iter:hobgoblin_death"
+    ]
+  },
+  "hobgoblin_step": {
+    "subtitles": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "iter:hobgoblin_step_1",
+      "iter:hobgoblin_step_2",
+      "iter:hobgoblin_step_3"
+    ]
+  },
   "bereft_ambient": {
-    "subtitles": "sounds.iter.bereft_ambient",
+    "subtitles": "subtitles.iter.bereft_ambient",
     "sounds": [
       "iter:bereft_ambient_1",
       "iter:bereft_ambient_2",
@@ -63,7 +93,7 @@
     ]
   },
   "bereft_hurt": {
-    "subtitles": "sounds.iter.bereft_hurt",
+    "subtitles": "subtitles.iter.bereft_hurt",
     "sounds": [
       "iter:bereft_hurt_1",
       "iter:bereft_hurt_2",
