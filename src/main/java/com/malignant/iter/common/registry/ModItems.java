@@ -1,14 +1,14 @@
 package com.malignant.iter.common.registry;
 
 import com.malignant.iter.IterMod;
-import com.malignant.iter.common.block.EtherbloomPlant;
 import com.malignant.iter.common.item.*;
-import com.malignant.iter.common.item.armor.ApprenticeArmor;
-import com.malignant.iter.common.item.armor.AzureArmor;
-import com.malignant.iter.common.item.curio.*;
-import com.malignant.iter.common.item.magic.defaults.SpellBook;
+import com.malignant.iter.common.item.armor.*;
+import com.malignant.iter.common.item.firearms.guns.*;
+import com.malignant.iter.common.item.firearms.ammo.*;
 import com.malignant.iter.common.item.magic.foci.*;
 import com.malignant.iter.common.item.magic.spells.*;
+import com.malignant.iter.common.item.magic.defaults.*;
+import com.malignant.iter.common.item.curio.*;
 import com.malignant.iter.common.misc.GobsteelTier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.*;
@@ -48,6 +48,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> RECURVE_BOW = ITEMS.register("recurve_bow", RecurveBowItem::new);
     public static final DeferredHolder<Item, Item> STINGER = ITEMS.register("stinger", StingerItem::new);
     public static final DeferredHolder<Item, Item> NETHERITE_WARBOW = ITEMS.register("netherite_warbow", NetheriteWarbowItem::new);
+    public static final DeferredHolder<Item, Item> GOBSTEEL_RIFLE = ITEMS.register("gobsteel_rifle", GobsteelRifle::new);
     public static final DeferredHolder<Item, Item> BLOODLETTER = ITEMS.register("bloodletter", () -> new Bloodletter(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, Item> MAGMANUM_SWORD = ITEMS.register("magmanum_sword", MagmanumSword::new);
     public static final DeferredHolder<Item, Item> MAGMANUM_PICKAXE = ITEMS.register("magmanum_pickaxe", MagmanumPickaxe::new);

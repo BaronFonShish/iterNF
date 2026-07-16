@@ -30,47 +30,15 @@ public abstract class AbstractGun extends Item {
     private boolean reloadState = false;
     private int reloadProgress = 0;
 
-    public AbstractGun(GunProperties properties, float basedamage, float velocity, float spread,
+    public AbstractGun(Properties properties, float basedamage, float velocity, float spread,
                        int magsize, int reloadtime, int firerate) {
-        super(properties.toItemProperties());
+        super(properties);
         this.basedamage = basedamage;
         this.velocity = velocity;
         this.spread = spread;
         this.magsize = magsize;
         this.reloadtime = reloadtime;
         this.firerate = firerate;
-    }
-
-    public static class GunProperties {
-        private int durability = 1000;
-        private Rarity rarity = Rarity.COMMON;
-        private int enchantability = 16;
-
-        public GunProperties durability(int durability) {
-            this.durability = durability;
-            return this;
-        }
-
-        public GunProperties rarity(Rarity rarity) {
-            this.rarity = rarity;
-            return this;
-        }
-
-        public GunProperties enchantability(int enchantability) {
-            this.enchantability = enchantability;
-            return this;
-        }
-
-        public Properties toItemProperties() {
-            Properties props = new Properties()
-                    .durability(durability)
-                    .rarity(rarity);
-            return props;
-        }
-
-        public int getEnchantability() {
-            return enchantability;
-        }
     }
 
     @Override
@@ -191,6 +159,7 @@ public abstract class AbstractGun extends Item {
             magazine.add(ammo.copyWithCount(1));
             ammo.shrink(1);
         }
+
         setMagazine(stack, magazine);
         abortReload(stack);
     }

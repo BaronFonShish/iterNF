@@ -6,6 +6,7 @@
   "mixins": [
     "StaffSpellcastingInHandMixin",
     "StaffSpellcastingMixin",
+    "GunArmPoseMixin",
     "TankardArmPoseMixin",
     "TankardItemRotationMixin"
   ],
