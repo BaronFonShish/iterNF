@@ -1,20 +1,3 @@
-/time set night
-/gamerule doDaylightCycle false
-/effect give Dev minecraft:night_vision infinite 0 true
-/place structure iter:simple_monster_room
-/place structure iter:small_generic_dungeon
-/place structure iter:generic_dungeon
-/effect give Dev minecraft:strength infinite 200 true
-/effect clear Dev
-/time set day
-/effect give Dev minecraft:night_vision infinite 0 true
-/tp Dev 0 100 0
-/difficulty peaceful
-/difficulty easy
-/difficulty peaceful
-/difficulty easy
-/difficulty peaceful
-/difficulty easy
 /tick rate 1
 /tick freeze
 /tick step 200t
@@ -48,3 +31,20 @@
 /tick rate 20
 /summon iter:goblin
 /summon iter:hobgoblin
+/give Dev iter:gobsteel_rifle
+/tick freeze
+/tick unfreeze
+/summon minecraft:wither_skeleton ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{}]}
+/summon minecraft:zombie ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{}]}
+/summon minecraft:wither_skeleton ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{}]}
+/summon minecraft:vindicator ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{}]}
+/summon minecraft:pillager ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{}]}
+/summon minecraft:pillager ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{id:"iter:gobsteel_rifle",count:1}]}
+/summon minecraft:piglin ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{id:"iter:gobsteel_rifle",count:1}]}
+/summon minecraft:zombie ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{id:"iter:gobsteel_rifle",count:1}]}
+/summon minecraft:skeleton ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{id:"iter:gobsteel_rifle",count:1}]}
+/summon minecraft:vindicator ~ ~ ~ {HandItems:[{id:"iter:gobsteel_rifle",count:1},{id:"iter:gobsteel_rifle",count:1}]}
+/give Dev iter:gobsteel_rifle
+/summon iter:hobgoblin
+/place structure iter:generic_dungeon
+/place structure iter:small_generic_dungeon

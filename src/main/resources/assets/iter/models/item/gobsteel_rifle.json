@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "iter:item/gobsteel_rifle_handheld",
+    "textures": {
+      "0": "iter:item/gobsteel_rifle_handheld"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "iter:item/gobsteel_rifle_item",
+      "textures": {
+        "layer0": "iter:item/gobsteel_rifle_item"
+      }
+    },
+    "fixed": {
+      "parent": "iter:item/gobsteel_rifle_item",
+      "textures": {
+        "layer0": "iter:item/gobsteel_rifle_item"
+      }
+    },
+    "ground": {
+      "parent": "iter:item/gobsteel_rifle_item",
+      "textures": {
+        "layer0": "iter:item/gobsteel_rifle_item"
+      }
+    }
+  }
+}
