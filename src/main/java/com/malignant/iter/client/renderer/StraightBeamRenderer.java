@@ -1,7 +1,7 @@
 package com.malignant.iter.client.renderer;
 
 import com.malignant.iter.IterMod;
-import com.malignant.iter.common.entity.misc.StraightBeam;
+import com.malignant.iter.common.entity.projectile.StraightBeam;
 import com.malignant.iter.common.misc.RenderTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

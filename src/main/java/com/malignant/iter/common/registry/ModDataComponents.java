@@ -36,8 +36,25 @@ public class ModDataComponents {
             DATA_COMPONENTS.registerComponentType("gun_magazine",
                     builder -> builder.persistent(Codec.list(ItemStack.CODEC)));
 
-    public static final Supplier<DataComponentType<Integer>> RELOAD_PROGRESS =
-            DATA_COMPONENTS.registerComponentType("reload_progress",
+    public static final Supplier<DataComponentType<Integer>> RELOAD_STATE =
+            DATA_COMPONENTS.registerComponentType("reload_state",
+                    builder -> builder.persistent(Codec.INT));
+
+    public static final Supplier<DataComponentType<Integer>> ANIMATION_STATE =
+            DATA_COMPONENTS.registerComponentType("animation_state",
+                    builder -> builder.persistent(Codec.INT));
+    //for guns: 1-fire; 2-reload
+
+    public static final Supplier<DataComponentType<Integer>> ANIMATION_PROGRESS =
+            DATA_COMPONENTS.registerComponentType("animation_progress",
+                    builder -> builder.persistent(Codec.INT));
+
+    public static final Supplier<DataComponentType<Long>> ANIMATION_START_TICK =
+            DATA_COMPONENTS.registerComponentType("animation_start_tick",
+                    builder -> builder.persistent(Codec.LONG));
+
+    public static final Supplier<DataComponentType<Integer>> ANIMATION_DURATION =
+            DATA_COMPONENTS.registerComponentType("animation_duration",
                     builder -> builder.persistent(Codec.INT));
 
     public static final Supplier<DataComponentType<String>> STAFF_SHAFT =

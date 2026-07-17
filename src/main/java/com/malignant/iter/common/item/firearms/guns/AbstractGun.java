@@ -1,15 +1,19 @@
 package com.malignant.iter.common.item.firearms.guns;
 
+import com.malignant.iter.common.entity.projectile.AbstractBullet;
 import com.malignant.iter.common.item.firearms.ammo.AbstractAmmo;
 import com.malignant.iter.common.registry.ModAttributes;
 import com.malignant.iter.common.registry.ModDataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
@@ -17,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public abstract class AbstractGun extends Item {
 
@@ -27,8 +30,6 @@ public abstract class AbstractGun extends Item {
     private final int magsize;
     private final int reloadtime;
     private final int firerate;
-    private boolean reloadState = false;
-    private int reloadProgress = 0;
 
     public AbstractGun(Properties properties, float basedamage, float velocity, float spread,
                        int magsize, int reloadtime, int firerate) {
@@ -53,7 +54,7 @@ public abstract class AbstractGun extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.CUSTOM;
+        return UseAnim.BOW;
     }
 
     @Override
@@ -71,15 +72,20 @@ public abstract class AbstractGun extends Item {
         List<ItemStack> magazine = stack.get(ModDataComponents.GUN_MAGAZINE.get());
 
         if (magazine == null) {
-            magazine = new ArrayList<>(this.magsize);
+            magazine = new ArrayList<>();
             setMagazine(stack, magazine);
             return magazine;
         }
 
-        if (magazine.size() > this.magsize) {
-            magazine = new ArrayList<>(magazine.subList(0, this.magsize));
-            setMagazine(stack, magazine);
+        magazine = new ArrayList<>(magazine);
+
+        magazine.removeIf(ItemStack::isEmpty);
+
+        while (magazine.size() > this.magsize) {
+            magazine.removeLast();
         }
+
+        setMagazine(stack, magazine);
 
         return magazine;
     }
@@ -89,7 +95,8 @@ public abstract class AbstractGun extends Item {
     }
 
     public int getAmmoCount(ItemStack stack) {
-        return getMagazine(stack).size();
+        List<ItemStack> magazine = getMagazine(stack);
+        return magazine.size();
     }
 
     public boolean isMagazineFull(ItemStack stack) {
@@ -100,50 +107,42 @@ public abstract class AbstractGun extends Item {
         return getAmmoCount(stack) == 0;
     }
 
-    public int getReloadtime(ItemStack stack, Player player){
+    public int getReloadtime(ItemStack stack, Player player) {
         AttributeInstance Reload = player.getAttribute(ModAttributes.RANGED_RELOAD_SPEED);
         float ReloadMod = Reload != null ? (float) Reload.getValue() : 1f;
-        return (int) Math.max((int)1, (20*this.reloadtime)/ReloadMod);
+        return (int) Math.max(1, (this.reloadtime) / ReloadMod);
     }
 
-    public int getFireTime(ItemStack stack, Player player){
+    public int getFireTime(ItemStack stack, Player player) {
         AttributeInstance FireTime = player.getAttribute(ModAttributes.RANGED_FIRE_RATE);
         float FireTimeMod = FireTime != null ? (float) FireTime.getValue() : 1f;
-        return (int) Math.max((int)1, 20/(this.firerate*FireTimeMod));
+        return (int) Math.max(1, 20 / (this.firerate * FireTimeMod));
     }
 
-    public boolean isReloading(ItemStack stack) {
-        return stack.getOrDefault(ModDataComponents.RELOAD_PROGRESS, 0) > 0;
+    public int isReloaded(ItemStack stack) {
+        return stack.getOrDefault(ModDataComponents.RELOAD_STATE.get(), 0);
     }
 
-    public void startReload(ItemStack stack, Player player) {
-        if (isMagazineFull(stack) || isReloading(stack) || !hasAmmo(player, stack)) return;
-
-        stack.set(ModDataComponents.RELOAD_PROGRESS.get(), 0);
+    public void setReloaded(ItemStack stack, int reloadstate) {
+        stack.set(ModDataComponents.RELOAD_STATE.get(), reloadstate);
     }
 
-    public void abortReload(ItemStack stack) {
-        stack.remove(ModDataComponents.RELOAD_PROGRESS.get());
+    public void forceAnimation(ItemStack stack, int state, long start, int duration) {
+        stack.set(ModDataComponents.ANIMATION_STATE.get(), state);
+        stack.set(ModDataComponents.ANIMATION_START_TICK.get(), start);
+        stack.set(ModDataComponents.ANIMATION_DURATION.get(), duration);
     }
 
-    public void reloadTick(ItemStack stack, Level level, Player player) {
-        if (!isReloading(stack)) return;
-        if (!HasMag()){
-            abortReload(stack);
-            return;
-        }
+    public int getAnimationState(ItemStack stack){
+        return stack.getOrDefault(ModDataComponents.ANIMATION_STATE.get(), 0);
+    }
 
-        if (player.getMainHandItem() != stack) {
-            abortReload(stack);
-            return;
-        }
+    public Number getAnimationStart(ItemStack stack){
+        return stack.getOrDefault(ModDataComponents.ANIMATION_START_TICK.get(), 0);
+    }
 
-        int progress = stack.getOrDefault(ModDataComponents.RELOAD_PROGRESS.get(), 0) + 1;
-        stack.set(ModDataComponents.RELOAD_PROGRESS.get(), progress);
-
-        if (progress >= getReloadtime(stack, player)) {
-            finishReload(stack, player);
-        }
+    public int getAnimationDuration(ItemStack stack){
+        return stack.getOrDefault(ModDataComponents.ANIMATION_DURATION.get(), 0);
     }
 
     public void finishReload(ItemStack stack, Player player) {
@@ -151,17 +150,27 @@ public abstract class AbstractGun extends Item {
 
         List<ItemStack> magazine = getMagazine(stack);
 
-        for (int i = 0; i < this.magsize; i++) {
-            if (getMagazine(stack).get(1) != ItemStack.EMPTY){break;}
+        magazine.removeIf(ItemStack::isEmpty);
 
+        while (magazine.size() < this.magsize) {
             ItemStack ammo = findAmmo(player, stack);
             if (ammo.isEmpty()) break;
+
             magazine.add(ammo.copyWithCount(1));
-            ammo.shrink(1);
+
+            if (!player.isCreative()) {
+                ammo.shrink(1);
+            }
         }
 
         setMagazine(stack, magazine);
-        abortReload(stack);
+        setReloaded(stack, 1);
+        int cooldownTicks = (int) getFireTime(stack, player);
+        player.getCooldowns().addCooldown(this, cooldownTicks);
+    }
+
+    public boolean isValidAmmo(ItemStack ammo, ItemStack gun) {
+        return ammo.getItem() instanceof AbstractAmmo;
     }
 
     public boolean hasAmmo(Player player, ItemStack gun) {
@@ -186,17 +195,100 @@ public abstract class AbstractGun extends Item {
         return ItemStack.EMPTY;
     }
 
-    public boolean HasMag(){
+    public boolean HasMag() {
         return (this.magsize > 0);
     }
 
-    public boolean isValidAmmo(ItemStack ammo, ItemStack gun) {
-        return ammo.getItem() instanceof AbstractAmmo;
+    public void fire(Level level, Player player, ItemStack gun) {
+        List<ItemStack> magazine = getMagazine(gun);
+
+        ItemStack ammoStack = magazine.getFirst();
+        if (!(ammoStack.getItem() instanceof AbstractAmmo round)) {
+            magazine.removeFirst();
+            setMagazine(gun, magazine);
+            return;
+        }
+
+        AttributeInstance rangedDamage = player.getAttribute(ModAttributes.RANGED_DAMAGE);
+        float totalDamage = (float) (rangedDamage.getValue() + round.getBasedamage());
+
+        float totalVelocity = this.velocity + round.getVelocity();
+        float totalSpread = this.spread + round.getSpread();
+
+
+        for (int i = 0; i < round.getProjectiles(); i++) {
+            EntityType<? extends Projectile> bulletType = round.getBulletType();
+            if (!(bulletType.create(level) instanceof AbstractBullet bullet)) {
+                return;
+            }
+
+            bullet.setPos(player.getX(), player.getEyeY(), player.getZ());
+            bullet.shootWithDamage(player, player.getLookAngle(), totalVelocity, totalSpread, totalDamage);
+            level.addFreshEntity(bullet);
+        }
+
+        //recoil on fire anim
+        forceAnimation(gun, 1, level.getGameTime(), Math.max(1, (getFireTime(gun, player)/2)));
+
+        magazine.removeFirst();
+        setMagazine(gun, magazine);
+        if (isMagazineEmpty(gun)){
+            setReloaded(gun, 0);
+        }
+
+        int cooldownTicks = getFireTime(gun, player);
+        player.getCooldowns().addCooldown(this, cooldownTicks);
+
+        if (!player.isCreative()) {
+            gun.hurtAndBreak(1, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+        }
     }
 
-    public void tick(ItemStack stack, Level level, Player player) {
-        if (isReloading(stack)) {
-            reloadTick(stack, level, player);
+    @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remainingTicks) {
+
+        if (getAmmoCount(stack) == magsize) return;
+
+        if (entity instanceof Player player) {
+
+            int useTime = this.getUseDuration(stack, entity) - remainingTicks;
+            if (!this.hasAmmo(player, stack)) {
+                System.out.println("no ammo");
+                return;
+            }
+
+            System.out.println("reloading: " + useTime + "/" + this.getReloadtime(stack, player));
+
+            if (useTime >= this.getReloadtime(stack, player)) {
+                System.out.println("reloaded");
+                this.finishReload(stack, player);
+                entity.stopUsingItem();
+            }
         }
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (hand != InteractionHand.MAIN_HAND) {
+            return InteractionResultHolder.fail(stack);
+        }
+
+        if (isReloaded(stack) == 1 && !player.isShiftKeyDown()) {
+            System.out.println("gun fired");
+            fire(level, player, stack);
+            return InteractionResultHolder.consume(stack);
+        }
+
+        if ((getAmmoCount(stack) == magsize)){
+            return InteractionResultHolder.fail(stack);
+        }
+
+        System.out.println("gun used");
+        //reload anim
+        forceAnimation(stack, 2, level.getGameTime(), Math.max(1, getReloadtime(stack, player)-1));
+        player.startUsingItem(hand);
+        return InteractionResultHolder.pass(stack);
     }
 }

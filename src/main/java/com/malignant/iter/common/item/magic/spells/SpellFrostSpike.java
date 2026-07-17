@@ -1,6 +1,6 @@
 package com.malignant.iter.common.item.magic.spells;
 
-import com.malignant.iter.common.entity.misc.FrostSpikeEntity;
+import com.malignant.iter.common.entity.projectile.FrostSpikeEntity;
 import com.malignant.iter.common.item.magic.defaults.SpellItem;
 import com.malignant.iter.common.registry.ModEntities;
 import com.malignant.iter.common.registry.ModSounds;

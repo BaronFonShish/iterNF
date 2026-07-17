@@ -1,7 +1,7 @@
 package com.malignant.iter.client.renderer;
 
 import com.malignant.iter.client.model.GenericArrowModel;
-import com.malignant.iter.common.entity.misc.HellblazeArrowEntity;
+import com.malignant.iter.common.entity.projectile.HellblazeArrowEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;

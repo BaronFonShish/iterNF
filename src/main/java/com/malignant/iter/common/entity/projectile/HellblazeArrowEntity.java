@@ -1,4 +1,4 @@
-package com.malignant.iter.common.entity.misc;
+package com.malignant.iter.common.entity.projectile;
 
 import com.malignant.iter.common.registry.ModEntities;
 import com.malignant.iter.common.registry.ModItems;

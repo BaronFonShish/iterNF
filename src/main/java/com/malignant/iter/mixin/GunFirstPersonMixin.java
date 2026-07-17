@@ -1,8 +1,10 @@
 package com.malignant.iter.mixin;
 
+import com.malignant.iter.common.item.firearms.guns.AbstractGun;
 import com.malignant.iter.common.item.magic.defaults.SpellFocus;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,13 +17,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemInHandRenderer.class)
-public abstract class StaffSpellcastingInHandMixin {
+public abstract class GunFirstPersonMixin {
 
     @Inject(
             method = "renderArmWithItem",
             at = @At("HEAD")
     )
-    private void rotateStaffItem(AbstractClientPlayer player,
+    private void GunAnim(AbstractClientPlayer player,
                                    float partialTicks,
                                    float pitch,
                                    InteractionHand hand,
@@ -32,21 +34,25 @@ public abstract class StaffSpellcastingInHandMixin {
                                    MultiBufferSource bufferSource,
                                    int packedLight,
                                    CallbackInfo ci) {
-        if (stack.getItem() instanceof SpellFocus && player.isUsingItem()) {
-            float usetime = player.getTicksUsingItem() + partialTicks;
 
-            InteractionHand usedHand = player.getUsedItemHand();
-            boolean isMainHand = usedHand == InteractionHand.MAIN_HAND;
-            HumanoidArm staffArm = isMainHand ? player.getMainArm() : player.getMainArm().getOpposite();
+        if (stack.getItem() instanceof AbstractGun gun) {
+            int state = gun.getAnimationState(stack);
+            long start = gun.getAnimationStart(stack).longValue();
+            int duration = gun.getAnimationDuration(stack);
 
-            if (staffArm == HumanoidArm.RIGHT) {
-                poseStack.translate(0.5F, -0.35F, -0.75F);
-                poseStack.mulPose(Axis.XP.rotationDegrees((float) Math.sin(usetime/2) * 5F));
-                poseStack.mulPose(Axis.ZP.rotationDegrees((float) Math.cos(usetime/2) * 5F));
-            } else {
-                poseStack.translate(-0.5F, -0.35F, -0.75F);
-                poseStack.mulPose(Axis.XP.rotationDegrees((float) Math.sin(usetime/2) * 5F));
-                poseStack.mulPose(Axis.ZP.rotationDegrees((float) -Math.cos(usetime/2) * 5F));
+            long elapsed = player.level().getGameTime() - start;
+            float elapsedSmooth = elapsed + partialTicks;
+            double progress = Math.min(1.0f, (double) elapsedSmooth/duration);
+
+            if (progress >= 1.0f) {
+                gun.forceAnimation(stack, 0, player.level().getGameTime(), 0);
+            }
+
+            if (state == 1){
+                poseStack.translate
+                        (0f,
+                        Math.sin(progress*Math.PI)*0.05f,
+                                Math.sin(progress*Math.PI)*0.1f);
             }
         }
     }

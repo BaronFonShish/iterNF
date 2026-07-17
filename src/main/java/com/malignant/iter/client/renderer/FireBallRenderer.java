@@ -2,7 +2,7 @@ package com.malignant.iter.client.renderer;
 
 import com.malignant.iter.IterMod;
 import com.malignant.iter.client.model.FireballModel;
-import com.malignant.iter.common.entity.misc.FireballEntity;
+import com.malignant.iter.common.entity.projectile.FireballEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;

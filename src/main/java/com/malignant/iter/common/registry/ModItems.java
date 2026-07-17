@@ -53,6 +53,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> MAGMANUM_SWORD = ITEMS.register("magmanum_sword", MagmanumSword::new);
     public static final DeferredHolder<Item, Item> MAGMANUM_PICKAXE = ITEMS.register("magmanum_pickaxe", MagmanumPickaxe::new);
     public static final DeferredHolder<Item, Item> HELLBLAZE_ARROW = ITEMS.register("hellblaze_arrow", () -> new Item(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> IRON_ROUND = ITEMS.register("iron_round", () -> new IronRound(new Item.Properties()));
 
     public static final DeferredHolder<Item, Item> SPIDERLING_SPAWN_EGG =
             ITEMS.register("spiderling_spawn_egg", () ->new DeferredSpawnEggItem

@@ -1,9 +1,9 @@
 package com.malignant.iter.common.entity;
 
-import com.malignant.iter.common.entity.misc.AbstractMagicProjectile;
-import com.malignant.iter.common.entity.misc.EtherboltEntity;
-import com.malignant.iter.common.entity.misc.FlameboltEntity;
-import com.malignant.iter.common.entity.misc.FrostSpikeEntity;
+import com.malignant.iter.common.entity.projectile.AbstractMagicProjectile;
+import com.malignant.iter.common.entity.projectile.EtherboltEntity;
+import com.malignant.iter.common.entity.projectile.FlameboltEntity;
+import com.malignant.iter.common.entity.projectile.FrostSpikeEntity;
 import com.malignant.iter.common.item.magic.defaults.SpellItem;
 import com.malignant.iter.common.misc.StrafeMovementGoal;
 import com.malignant.iter.common.registry.ModEntities;

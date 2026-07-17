@@ -40,7 +40,6 @@ public abstract class GunArmPoseMixin<T extends LivingEntity> extends EntityMode
 
         if (stack.getItem() instanceof AbstractGun) {
             HumanoidArm gunArm = entity.getMainArm();
-
             if (gunArm == HumanoidArm.RIGHT) {
                 model.rightArm.xRot = (-(float) Math.PI / 2F) + model.head.xRot;
                 model.rightArm.yRot = model.head.yRot;

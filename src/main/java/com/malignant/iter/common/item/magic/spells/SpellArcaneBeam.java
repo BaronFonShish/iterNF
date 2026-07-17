@@ -1,6 +1,6 @@
 package com.malignant.iter.common.item.magic.spells;
 
-import com.malignant.iter.common.entity.misc.StraightBeam;
+import com.malignant.iter.common.entity.projectile.StraightBeam;
 import com.malignant.iter.common.item.magic.defaults.SpellItem;
 import com.malignant.iter.common.registry.ModParticleTypes;
 import com.malignant.iter.common.registry.ModSounds;

@@ -1,6 +1,6 @@
 package com.malignant.iter.common.item.magic.spells;
 
-import com.malignant.iter.common.entity.misc.JaggedBeam;
+import com.malignant.iter.common.entity.projectile.JaggedBeam;
 import com.malignant.iter.common.item.magic.defaults.SpellItem;
 import com.malignant.iter.common.registry.ModSounds;
 import net.minecraft.core.registries.Registries;

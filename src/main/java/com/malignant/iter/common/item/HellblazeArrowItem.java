@@ -1,6 +1,6 @@
 package com.malignant.iter.common.item;
 
-import com.malignant.iter.common.entity.misc.HellblazeArrowEntity;
+import com.malignant.iter.common.entity.projectile.HellblazeArrowEntity;
 import com.malignant.iter.common.registry.ModEntities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;

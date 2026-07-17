@@ -4,9 +4,10 @@
   "package": "com.malignant.iter.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "StaffSpellcastingInHandMixin",
+    "StaffSpellcastingFirstPersonMixin",
     "StaffSpellcastingMixin",
     "GunArmPoseMixin",
+    "GunFirstPersonMixin",
     "TankardArmPoseMixin",
     "TankardItemRotationMixin"
   ],

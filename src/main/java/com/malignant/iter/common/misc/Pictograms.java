@@ -25,6 +25,16 @@ public class Pictograms {
     public static final char IA_LIFE = '\uE00e';
     public static final char IA_ENTROPY = '\uE00f';
 
+    public static final char AT_BLANK = '\uE0f0';
+    public static final char AT_FLINT = '\uE0f1';
+    public static final char AT_GOBLIN = '\uE0f2';
+    public static final char AT_IRON = '\uE0f3';
+    public static final char AT_SEED = '\uE0f4';
+    public static final char AT_AMETHYST = '\uE0f5';
+    public static final char AT_DIAMOND = '\uE0f6';
+    public static final char AT_MAGMANUM = '\uE0f7';
+    public static final char AT_FLECHETTE = '\uE0f8';
+
     public static final ResourceLocation PICTOGRAM_FONT = ResourceLocation.parse(IterMod.MOD_ID + ":iter_pictograms");
 
     public static MutableComponent getIcon(char icon) {

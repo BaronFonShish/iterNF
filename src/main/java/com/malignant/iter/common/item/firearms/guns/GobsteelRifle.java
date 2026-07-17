@@ -5,10 +5,10 @@ import net.minecraft.world.item.Rarity;
 public class GobsteelRifle extends AbstractGun{
 
     private static final float DAMAGE = 4;
-    private static final float VELOCITY = 2;
-    private static final float SPREAD = 5;
-    private static final int MAG_SIZE = 1;
-    private static final int RELOAD_TIME = 30;
+    private static final float VELOCITY = 5;
+    private static final float SPREAD = 2;
+    private static final int MAG_SIZE = 4;
+    private static final int RELOAD_TIME = 25;
     private static final int FIRE_RATE = 1;
 
     public GobsteelRifle() {

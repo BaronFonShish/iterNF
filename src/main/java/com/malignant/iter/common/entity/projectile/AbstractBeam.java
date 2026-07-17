@@ -1,4 +1,4 @@
-package com.malignant.iter.common.entity.misc;
+package com.malignant.iter.common.entity.projectile;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

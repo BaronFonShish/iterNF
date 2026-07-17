@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 
-@EventBusSubscriber(modid = "iter")
+@EventBusSubscriber(modid = IterMod.MOD_ID)
 
 public class ModAttributes {
 

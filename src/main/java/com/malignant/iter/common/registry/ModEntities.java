@@ -2,7 +2,7 @@ package com.malignant.iter.common.registry;
 
 import com.malignant.iter.IterMod;
 import com.malignant.iter.common.entity.*;
-import com.malignant.iter.common.entity.misc.*;
+import com.malignant.iter.common.entity.projectile.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -114,6 +114,7 @@ public class ModEntities {
                             .sized(0.25f, 0.25f)
                             .build("flamebolt"));
 
+
     public static final DeferredHolder<EntityType<?>, EntityType<FireballEntity>> FIREBALL =
             ENTITY_TYPES.register("fireball",
                     () -> EntityType.Builder.<FireballEntity>of(FireballEntity::new, MobCategory.MISC)
@@ -129,6 +130,15 @@ public class ModEntities {
                             .setTrackingRange(64).setUpdateInterval(1)
                             .sized(0.25f, 0.25f)
                             .build("hellblaze_arrow"));
+
+
+    public static final DeferredHolder<EntityType<?>, EntityType<IronBullet>> IRON_BULLET =
+            ENTITY_TYPES.register("iron_bullet",
+                    () -> EntityType.Builder.<IronBullet>of(IronBullet::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64).setUpdateInterval(1)
+                            .sized(0.05f, 0.05f)
+                            .build("iron_bullet"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

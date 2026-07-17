@@ -1,7 +1,7 @@
 package com.malignant.iter.client.renderer;
 
 import com.malignant.iter.client.model.FrostSpikeModel;
-import com.malignant.iter.common.entity.misc.FrostSpikeEntity;
+import com.malignant.iter.common.entity.projectile.FrostSpikeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;

@@ -125,6 +125,8 @@ public class IterMod {
             event.registerEntityRenderer(ModEntities.DARK_SORCERER.get(), DarkSorcererRenderer::new);
             event.registerEntityRenderer(ModEntities.BEREFT.get(), BereftRenderer::new);
 
+            event.registerEntityRenderer(ModEntities.IRON_BULLET.get(), IronBulletRenderer::new);
+
             event.registerEntityRenderer(ModEntities.ETHERBOLT.get(), EtherboltRenderer::new);
             event.registerEntityRenderer(ModEntities.FLAMEBOLT.get(), FlameboltRenderer::new);
             event.registerEntityRenderer(ModEntities.FROST_SPIKE.get(), FrostSpikeRenderer::new);
