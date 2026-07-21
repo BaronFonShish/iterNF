@@ -64,6 +64,13 @@
   "item.iter.spell_book": "Книга заклинаний",
   "item.iter.recurve_bow": "Рекурсивный лук",
   "item.iter.netherite_warbow": "Незеритовый боевой лук",
+  "item.iter.gobsteel_rifle": "Гобсталевое ружье",
+  "item.iter.dwarven_revolver": "Дворфский револьвер",
+  "item.iter.flint_round": "Кремневый патрон",
+  "item.iter.iron_round": "Железный патрон",
+  "item.iter.goblin_round": "Гоблинский патрон",
+  "item.iter.seedshot_round": "Семядробь",
+
   "item.iter.bowstring": "Тетива",
   "item.iter.gobsteel_sword": "Гобсталевый меч",
   "item.iter.gobsteel_axe": "Гобсталевый топор",

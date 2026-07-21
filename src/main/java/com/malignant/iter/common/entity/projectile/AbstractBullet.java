@@ -1,7 +1,13 @@
 package com.malignant.iter.common.entity.projectile;
 
+import com.malignant.iter.common.registry.ModDamageTypes;
+import com.malignant.iter.common.registry.ModParticleTypes;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -73,7 +79,7 @@ public abstract class AbstractBullet extends AbstractArrow {
             DamageSource damageSource = new DamageSource(
                     this.level().registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.MOB_PROJECTILE),
+                            .getHolderOrThrow(ModDamageTypes.BULLET),
                     this,
                     owner
             );
@@ -126,6 +132,16 @@ public abstract class AbstractBullet extends AbstractArrow {
     }
 
     protected void spawnTrailParticles() {
+        Level level = this.level();
+        Vec3 pos = this.position();
+        double offsetX = (this.random.nextDouble() - 0.5) * 0.2;
+        double offsetY = (this.random.nextDouble() - 0.5) * 0.2;
+        double offsetZ = (this.random.nextDouble() - 0.5) * 0.2;
+        level.addParticle(ParticleTypes.SMOKE,
+                pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ,
+                Mth.nextFloat(random, -0.025f, 0.025f),
+                Mth.nextFloat(random, -0.025f, 0.025f),
+                Mth.nextFloat(random, -0.025f, 0.025f));
     }
 
     @Override

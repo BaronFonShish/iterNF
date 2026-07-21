@@ -94,11 +94,14 @@ public class ModCreativeTabEvents {
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.DIAMOND_SCYTHE.get()), new ItemStack(ModItems.NETHERITE_SCYTHE.get())),
 
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.BOW), new ItemStack(ModItems.RECURVE_BOW.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.CROSSBOW), new ItemStack(ModItems.STINGER.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.RECURVE_BOW.get()), new ItemStack(ModItems.NETHERITE_WARBOW.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.NETHERITE_SWORD), new ItemStack(ModItems.GOBSTEEL_SWORD.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.NETHERITE_AXE), new ItemStack(ModItems.GOBSTEEL_AXE.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOBSTEEL_SWORD.get()), new ItemStack(ModItems.MAGMANUM_SWORD.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.CROSSBOW), new ItemStack(ModItems.STINGER.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.STINGER.get()), new ItemStack(ModItems.GOBSTEEL_RIFLE.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOBSTEEL_RIFLE.get()), new ItemStack(ModItems.DWARVEN_REVOLVER.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.DWARVEN_REVOLVER.get()), new ItemStack(ModItems.FLINT_ROUND.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.FLINT_ROUND.get()), new ItemStack(ModItems.GOBLIN_ROUND.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOBLIN_ROUND.get()), new ItemStack(ModItems.IRON_ROUND.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.IRON_ROUND.get()), new ItemStack(ModItems.SEEDSHOT_ROUND.get())),
 
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.TURTLE_HELMET), new ItemStack(ModItems.APPRENTICE_HOOD.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.APPRENTICE_HOOD.get()), new ItemStack(ModItems.APPRENTICE_ROBES.get())),

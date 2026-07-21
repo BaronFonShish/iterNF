@@ -140,6 +140,30 @@ public class ModEntities {
                             .sized(0.05f, 0.05f)
                             .build("iron_bullet"));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<GoblinBullet>> GOBLIN_BULLET =
+            ENTITY_TYPES.register("goblin_bullet",
+                    () -> EntityType.Builder.<GoblinBullet>of(GoblinBullet::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64).setUpdateInterval(1)
+                            .sized(0.05f, 0.05f)
+                            .build("goblin_bullet"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SeedshotBullet>> SEEDSHOT_BULLET =
+            ENTITY_TYPES.register("seedshot_bullet",
+                    () -> EntityType.Builder.<SeedshotBullet>of(SeedshotBullet::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64).setUpdateInterval(1)
+                            .sized(0.05f, 0.05f)
+                            .build("seedshot_bullet"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<FlintBullet>> FLINT_BULLET =
+            ENTITY_TYPES.register("flint_bullet",
+                    () -> EntityType.Builder.<FlintBullet>of(FlintBullet::new, MobCategory.MISC)
+                            .setShouldReceiveVelocityUpdates(true)
+                            .setTrackingRange(64).setUpdateInterval(1)
+                            .sized(0.05f, 0.05f)
+                            .build("flint_bullet"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

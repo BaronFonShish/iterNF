@@ -42,35 +42,35 @@ public class ModAttributes {
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> REGENERATION = ATTRIBUTES.register("regeneration",
-            () -> new RangedAttribute("attribute.regeneration", 0.0, 0.0, 128.0)
+            () -> new RangedAttribute("attribute.iter.regeneration", 0.0, 0.0, 128.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> RANGED_DAMAGE = ATTRIBUTES.register("ranged_damage",
-            () -> new RangedAttribute("attribute.ranged_damage", 1.0, 0.0, 1000.0)
+            () -> new RangedAttribute("attribute.iter.ranged_damage", 1.0, 0.0, 1000.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> RANGED_ACCURACY = ATTRIBUTES.register("ranged_accuracy",
-            () -> new RangedAttribute("attribute.ranged_accuracy", 1.0, 0.0, 10.0)
+            () -> new RangedAttribute("attribute.iter.ranged_accuracy", 1.0, 0.0, 10.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> RANGED_RELOAD_SPEED = ATTRIBUTES.register("ranged_reload_speed",
-            () -> new RangedAttribute("attribute.ranged_reload_speed", 1.0, 0.0, 10.0)
+            () -> new RangedAttribute("attribute.iter.ranged_reload_speed", 1.0, 0.0, 10.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> RANGED_FIRE_RATE = ATTRIBUTES.register("ranged_fire_rate",
-            () -> new RangedAttribute("attribute.ranged_fire_rate", 1.0, 0.0, 10.0)
+            () -> new RangedAttribute("attribute.iter.ranged_fire_rate", 1.0, 0.0, 10.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> ARCANE_POWER = ATTRIBUTES.register("arcane_power",
-            () -> new RangedAttribute("attribute.arcane_power", 1.0, 0.0, 128.0)
+            () -> new RangedAttribute("attribute.iter.arcane_power", 1.0, 0.0, 128.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> OCCULT_POWER = ATTRIBUTES.register("occult_power",
-            () -> new RangedAttribute("attribute.occult_power", 1.0, 0.0, 128.0)
+            () -> new RangedAttribute("attribute.iter.occult_power", 1.0, 0.0, 128.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> PRIMAL_POWER = ATTRIBUTES.register("primal_power",
-            () -> new RangedAttribute("attribute.primal_power", 1.0, 0.0, 128.0)
+            () -> new RangedAttribute("attribute.iter.primal_power", 1.0, 0.0, 128.0)
                     .setSyncable(true));
 
     public static final DeferredHolder<Attribute, Attribute> FLIGHT_TIME = ATTRIBUTES.register("flight_time",

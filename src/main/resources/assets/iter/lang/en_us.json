@@ -64,6 +64,13 @@
   "item.iter.spell_book": "Spell Book",
   "item.iter.recurve_bow": "Recurve Bow",
   "item.iter.netherite_warbow": "Netherite Warbow",
+  "item.iter.gobsteel_rifle": "Gobsteel Rifle",
+  "item.iter.dwarven_revolver": "Dwarven Revolver",
+  "item.iter.flint_round": "Flint Round",
+  "item.iter.iron_round": "Iron Round",
+  "item.iter.goblin_round": "Goblin Round",
+  "item.iter.seedshot_round": "Seedshot Round",
+
   "item.iter.bowstring": "Bowstring",
   "item.iter.gobsteel_sword": "Gobsteel Sword",
   "item.iter.gobsteel_axe": "Gobsteel Axe",

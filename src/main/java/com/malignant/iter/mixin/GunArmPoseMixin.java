@@ -38,8 +38,9 @@ public abstract class GunArmPoseMixin<T extends LivingEntity> extends EntityMode
         ItemStack offstack = entity.getOffhandItem();
         HumanoidModel<?> model = (HumanoidModel<?>) (Object) this;
 
-        if (stack.getItem() instanceof AbstractGun) {
+        if (stack.getItem() instanceof AbstractGun gun) {
             HumanoidArm gunArm = entity.getMainArm();
+
             if (gunArm == HumanoidArm.RIGHT) {
                 model.rightArm.xRot = (-(float) Math.PI / 2F) + model.head.xRot;
                 model.rightArm.yRot = model.head.yRot;
@@ -51,7 +52,7 @@ public abstract class GunArmPoseMixin<T extends LivingEntity> extends EntityMode
             }
         }
 
-        if (offstack.getItem() instanceof AbstractGun) {
+        if (offstack.getItem() instanceof AbstractGun gun) {
             HumanoidArm gunArm = entity.getMainArm().getOpposite();
 
             if (gunArm == HumanoidArm.RIGHT) {

@@ -49,11 +49,16 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> STINGER = ITEMS.register("stinger", StingerItem::new);
     public static final DeferredHolder<Item, Item> NETHERITE_WARBOW = ITEMS.register("netherite_warbow", NetheriteWarbowItem::new);
     public static final DeferredHolder<Item, Item> GOBSTEEL_RIFLE = ITEMS.register("gobsteel_rifle", GobsteelRifle::new);
+    public static final DeferredHolder<Item, Item> DWARVEN_REVOLVER = ITEMS.register("dwarven_revolver", DwarvenRevolver::new);
     public static final DeferredHolder<Item, Item> BLOODLETTER = ITEMS.register("bloodletter", () -> new Bloodletter(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, Item> MAGMANUM_SWORD = ITEMS.register("magmanum_sword", MagmanumSword::new);
     public static final DeferredHolder<Item, Item> MAGMANUM_PICKAXE = ITEMS.register("magmanum_pickaxe", MagmanumPickaxe::new);
+
     public static final DeferredHolder<Item, Item> HELLBLAZE_ARROW = ITEMS.register("hellblaze_arrow", () -> new Item(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> FLINT_ROUND = ITEMS.register("flint_round", () -> new FlintRound(new Item.Properties()));
     public static final DeferredHolder<Item, Item> IRON_ROUND = ITEMS.register("iron_round", () -> new IronRound(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> GOBLIN_ROUND = ITEMS.register("goblin_round", () -> new GoblinRound(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> SEEDSHOT_ROUND = ITEMS.register("seedshot_round", () -> new SeedshotRound(new Item.Properties()));
 
     public static final DeferredHolder<Item, Item> SPIDERLING_SPAWN_EGG =
             ITEMS.register("spiderling_spawn_egg", () ->new DeferredSpawnEggItem

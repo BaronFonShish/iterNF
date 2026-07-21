@@ -18,7 +18,7 @@ public class HobGoblinRenderer extends MobRenderer<HobGoblinEntity, HobGoblinMod
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(IterMod.MOD_ID, "textures/entity/tech_hobgoblin.png");
 
     public HobGoblinRenderer(EntityRendererProvider.Context context) {
-        super(context, new HobGoblinModel<>(context.bakeLayer(HobGoblinModel.LAYER_LOCATION)), 0.3f);
+        super(context, new HobGoblinModel<>(context.bakeLayer(HobGoblinModel.LAYER_LOCATION)), 0.9f);
     }
 
     @Override

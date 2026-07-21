@@ -2,103 +2,118 @@
   "etherbolt_impact": {
     "subtitles": "subtitles.iter.etherbolt_impact",
     "sounds": [
-      "iter:etherbolt_impact_1",
-      "iter:etherbolt_impact_2"
+      "iter:misc/etherbolt_impact_1",
+      "iter:misc/etherbolt_impact_2"
     ]
   },
   "start_casting": {
     "subtitles": "subtitles.iter.start_casting",
     "sounds": [
-      "iter:start_casting"
+      "iter:misc/start_casting"
     ]
   },
   "cast_arcane": {
     "subtitles": "subtitles.iter.cast_arcane",
     "sounds": [
-      "iter:cast_arcane_1",
-      "iter:cast_arcane_2"
+      "iter:misc/cast_arcane_1",
+      "iter:misc/cast_arcane_2"
     ]
   },
   "cast_occult": {
     "subtitles": "subtitles.iter.cast_occult",
     "sounds": [
-      "iter:cast_occult_1",
-      "iter:cast_occult_2"
+      "iter:misc/cast_occult_1",
+      "iter:misc/cast_occult_2"
     ]
   },
   "goblin_ambient": {
     "subtitles": "subtitles.iter.goblin_ambient",
     "sounds": [
-      "iter:goblin_ambient_1",
-      "iter:goblin_ambient_2",
-      "iter:goblin_ambient_3",
-      "iter:goblin_ambient_4"
+      "iter:entity/goblin_ambient_1",
+      "iter:entity/goblin_ambient_2",
+      "iter:entity/goblin_ambient_3",
+      "iter:entity/goblin_ambient_4"
     ]
   },
   "goblin_hurt": {
     "subtitles": "subtitles.iter.goblin_hurt",
     "sounds": [
-      "iter:goblin_hurt_1",
-      "iter:goblin_hurt_2",
-      "iter:goblin_hurt_3",
-      "iter:goblin_hurt_4"
+      "iter:entity/goblin_hurt_1",
+      "iter:entity/goblin_hurt_2",
+      "iter:entity/goblin_hurt_3",
+      "iter:entity/goblin_hurt_4"
     ]
   },
   "goblin_death": {
     "subtitles": "subtitles.iter.goblin_death",
     "sounds": [
-      "iter:goblin_death"
+      "iter:entity/goblin_death"
     ]
   },
   "hobgoblin_ambient": {
     "subtitles": "subtitles.iter.hobgoblin_ambient",
     "sounds": [
-      "iter:hobgoblin_ambient_1",
-      "iter:hobgoblin_ambient_2",
-      "iter:hobgoblin_ambient_3",
-      "iter:hobgoblin_ambient_4"
+      "iter:entity/hobgoblin_ambient_1",
+      "iter:entity/hobgoblin_ambient_2",
+      "iter:entity/hobgoblin_ambient_3",
+      "iter:entity/hobgoblin_ambient_4"
     ]
   },
   "hobgoblin_hurt": {
     "subtitles": "subtitles.iter.hobgoblin_hurt",
     "sounds": [
-      "iter:hobgoblin_hurt_1",
-      "iter:hobgoblin_hurt_2",
-      "iter:hobgoblin_hurt_3"
+      "iter:entity/hobgoblin_hurt_1",
+      "iter:entity/hobgoblin_hurt_2",
+      "iter:entity/hobgoblin_hurt_3"
     ]
   },
   "hobgoblin_death": {
     "subtitles": "subtitles.iter.hobgoblin_death",
     "sounds": [
-      "iter:hobgoblin_death"
+      "iter:entity/hobgoblin_death"
     ]
   },
   "hobgoblin_step": {
     "subtitles": "subtitles.block.generic.footsteps",
     "sounds": [
-      "iter:hobgoblin_step_1",
-      "iter:hobgoblin_step_2",
-      "iter:hobgoblin_step_3"
+      "iter:entity/hobgoblin_step_1",
+      "iter:entity/hobgoblin_step_2",
+      "iter:entity/hobgoblin_step_3"
     ]
   },
   "bereft_ambient": {
     "subtitles": "subtitles.iter.bereft_ambient",
     "sounds": [
-      "iter:bereft_ambient_1",
-      "iter:bereft_ambient_2",
-      "iter:bereft_ambient_3",
-      "iter:bereft_ambient_4",
-      "iter:bereft_ambient_5",
-      "iter:bereft_ambient_6"
+      "iter:entity/bereft_ambient_1",
+      "iter:entity/bereft_ambient_2",
+      "iter:entity/bereft_ambient_3",
+      "iter:entity/bereft_ambient_4",
+      "iter:entity/bereft_ambient_5",
+      "iter:entity/bereft_ambient_6"
     ]
   },
   "bereft_hurt": {
     "subtitles": "subtitles.iter.bereft_hurt",
     "sounds": [
-      "iter:bereft_hurt_1",
-      "iter:bereft_hurt_2",
-      "iter:bereft_hurt_3",
-      "iter:bereft_hurt_4"
+      "iter:entity/bereft_hurt_1",
+      "iter:entity/bereft_hurt_2",
+      "iter:entity/bereft_hurt_3",
+      "iter:entity/bereft_hurt_4"
+    ]
+  },
+  "rifle_shoot": {
+    "subtitles": "subtitles.iter.rifle_shoot",
+    "sounds": [
+      "iter:misc/rifle_shoot_1",
+      "iter:misc/rifle_shoot_2"
+    ]
+  },
+  "reload_gun": {
+    "subtitles": "subtitles.iter.reload_gun",
+    "sounds": [
+      "iter:misc/load_gun_2",
+      "iter:misc/load_gun_3",
+      "iter:misc/load_gun_3"
     ]
   }
 }

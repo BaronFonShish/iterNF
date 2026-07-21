@@ -1,6 +1,7 @@
 package com.malignant.iter.common.entity.projectile;
 
 import com.malignant.iter.common.registry.ModEntities;
+import com.malignant.iter.common.registry.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +31,6 @@ public class IronBullet extends AbstractBullet{
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return ItemStack.EMPTY;
+        return ModItems.IRON_ROUND.get().getDefaultInstance();
     }
 }

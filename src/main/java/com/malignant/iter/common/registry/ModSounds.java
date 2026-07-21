@@ -22,6 +22,12 @@ public class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> GOBLIN_DEATH = registerSoundEvent("goblin_death");
     public static final DeferredHolder<SoundEvent, SoundEvent> BEREFT_AMBIENT = registerSoundEvent("bereft_ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> BEREFT_HURT = registerSoundEvent("bereft_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HOBGOBLIN_AMBIENT = registerSoundEvent("hobgoblin_ambient");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HOBGOBLIN_HURT = registerSoundEvent("hobgoblin_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HOBGOBLIN_DEATH = registerSoundEvent("hobgoblin_death");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HOBGOBLIN_STEP = registerSoundEvent("hobgoblin_step");
+    public static final DeferredHolder<SoundEvent, SoundEvent> RIFLE_SHOOT = registerSoundEvent("rifle_shoot");
+    public static final DeferredHolder<SoundEvent, SoundEvent> RELOAD_GUN = registerSoundEvent("reload_gun");
 
 
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name){

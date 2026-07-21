@@ -2,7 +2,9 @@ package com.malignant.iter.common.entity;
 
 import com.malignant.iter.common.registry.ModItems;
 import com.malignant.iter.common.registry.ModSounds;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -19,10 +21,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class HobGoblinEntity extends Monster {
+public class    HobGoblinEntity extends Monster {
 
     public HobGoblinEntity(EntityType<HobGoblinEntity> type, Level world) {
         super(type, world);
@@ -31,6 +34,8 @@ public class HobGoblinEntity extends Monster {
     public static AttributeSupplier.Builder createAttributes() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
         builder = builder.add(Attributes.MOVEMENT_SPEED, 0.2);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.4);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.2);
         builder = builder.add(Attributes.MAX_HEALTH, 40);
         builder = builder.add(Attributes.ARMOR, 12);
         builder = builder.add(Attributes.ATTACK_DAMAGE, 6);
@@ -60,17 +65,22 @@ public class HobGoblinEntity extends Monster {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return ModSounds.GOBLIN_AMBIENT.get();
+        return ModSounds.HOBGOBLIN_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return ModSounds.GOBLIN_HURT.get();
+        return ModSounds.HOBGOBLIN_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.GOBLIN_DEATH.get();
+        return ModSounds.HOBGOBLIN_DEATH.get();
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(ModSounds.HOBGOBLIN_STEP.get(), 1.1F, Mth.nextFloat(random, 0.8f, 1.15f));
     }
 
     @Nullable

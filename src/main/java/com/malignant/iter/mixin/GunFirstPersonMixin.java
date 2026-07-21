@@ -48,11 +48,19 @@ public abstract class GunFirstPersonMixin {
                 gun.forceAnimation(stack, 0, player.level().getGameTime(), 0);
             }
 
+            float easeIn = 1.0f - (float) Math.pow(1.0f - progress, 3.0f);
+
             if (state == 1){
                 poseStack.translate
                         (0f,
-                        Math.sin(progress*Math.PI)*0.05f,
-                                Math.sin(progress*Math.PI)*0.1f);
+                        0f,
+                                Math.sin(easeIn*Math.PI)*0.15f);
+                poseStack.mulPose(Axis.XP.rotationDegrees((float) Math.sin(easeIn*Math.PI) * 5f));
+            }
+
+            if (state == 2 && player.isUsingItem()){
+                poseStack.translate(0f, (float) Math.sin(easeIn*Math.PI) * 0.15f, Math.sin(easeIn*Math.PI) * 0.25f);
+                poseStack.mulPose(Axis.XP.rotationDegrees((float) Math.sin(progress*Math.PI) * -45f));
             }
         }
     }

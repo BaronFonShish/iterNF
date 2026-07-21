@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:item/generated",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "iter:item/dwarven_revolver_handheld",
+    "textures": {
+      "0": "iter:item/dwarven_revolver_handheld"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "iter:item/dwarven_revolver_item",
+      "textures": {
+        "layer0": "iter:item/dwarven_revolver_item"
+      }
+    },
+    "fixed": {
+      "parent": "iter:item/dwarven_revolver_item",
+      "textures": {
+        "layer0": "iter:item/dwarven_revolver_item"
+      }
+    },
+    "ground": {
+      "parent": "iter:item/dwarven_revolver_item",
+      "textures": {
+        "layer0": "iter:item/dwarven_revolver_item"
+      }
+    }
+  }
+}

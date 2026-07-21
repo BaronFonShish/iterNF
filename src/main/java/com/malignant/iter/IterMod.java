@@ -5,6 +5,7 @@ import com.malignant.iter.client.model.ModModelLayers;
 import com.malignant.iter.client.renderer.*;
 import com.malignant.iter.common.IterModConfig;
 import com.malignant.iter.common.entity.*;
+import com.malignant.iter.common.entity.projectile.FlintBullet;
 import com.malignant.iter.common.payload.*;
 import com.malignant.iter.common.registry.*;
 import com.mojang.logging.LogUtils;
@@ -55,6 +56,7 @@ public class IterMod {
         ModParticleTypes.REGISTRY.register(modEventBus);
         modEventBus.addListener(PayloadRegistry::registerPayloads);
         ModMenus.register(modEventBus);
+        ModDamageTypes.register(modEventBus);
 
         ModCapabilities.ATTACHMENT_TYPES.register(modEventBus);
 
@@ -125,7 +127,10 @@ public class IterMod {
             event.registerEntityRenderer(ModEntities.DARK_SORCERER.get(), DarkSorcererRenderer::new);
             event.registerEntityRenderer(ModEntities.BEREFT.get(), BereftRenderer::new);
 
+            event.registerEntityRenderer(ModEntities.FLINT_BULLET.get(), FlintBulletRenderer::new);
             event.registerEntityRenderer(ModEntities.IRON_BULLET.get(), IronBulletRenderer::new);
+            event.registerEntityRenderer(ModEntities.GOBLIN_BULLET.get(), GoblinBulletRenderer::new);
+            event.registerEntityRenderer(ModEntities.SEEDSHOT_BULLET.get(), SeedshotBulletRenderer::new);
 
             event.registerEntityRenderer(ModEntities.ETHERBOLT.get(), EtherboltRenderer::new);
             event.registerEntityRenderer(ModEntities.FLAMEBOLT.get(), FlameboltRenderer::new);
