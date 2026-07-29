@@ -12,7 +12,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class SpellEtherbolt extends SpellItem {
 
-    public SpellEtherbolt() {super(new Properties(), "arcane", "force", "ether", 1, 10, 2, 5);}
+    public SpellEtherbolt() {super(new Properties(), SpellDomain.ARCANE, SpellMethod.FORCE, SpellAspect.ETHER, 1, 10, 2, 5);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -35,5 +35,10 @@ public class SpellEtherbolt extends SpellItem {
                 ModSounds.CAST_ARCANE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
         level.addFreshEntity(etherbolt);
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

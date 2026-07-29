@@ -135,11 +135,6 @@ public class BereftModel<T extends LivingEntity> extends EntityModel<T> implemen
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-        float red = ((color >> 16) & 0xFF) / 255.0F;
-        float green = ((color >> 8) & 0xFF) / 255.0F;
-        float blue = (color & 0xFF) / 255.0F;
-        float alpha = ((color >> 24) & 0xFF) / 255.0F;
-
         wholemob.render(poseStack, vertexConsumer, packedLight, packedOverlay);
     }
 }

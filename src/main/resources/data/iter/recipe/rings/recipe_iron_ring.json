@@ -3,7 +3,7 @@
   "category": "misc",
   "pattern": [
     "aba",
-    "b b",
+    "bnb",
     "aba"
   ],
   "key": {
@@ -12,6 +12,9 @@
     },
     "b": {
       "item": "minecraft:iron_ingot"
+    },
+    "n": {
+      "item": "iter:nostelon_nugget"
     }
   },
   "result": {

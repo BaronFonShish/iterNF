@@ -13,10 +13,7 @@ public class BoneStaff extends SpellFocus {
                 1,
                 3,
                 0,
-                -0.2f,
-                0,
-                0.05f,
-                0
+                -0.2f
         );
     }
 }

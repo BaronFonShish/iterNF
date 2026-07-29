@@ -85,25 +85,4 @@ public class Bloodletter extends DaggerItem {
         }
         return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
     }
-
-    @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers() {
-        return ItemAttributeModifiers.builder()
-                .add(Attributes.ATTACK_DAMAGE,
-                        new AttributeModifier(BASE_ATTACK_DAMAGE_ID,
-                                Tiers.IRON.getAttackDamageBonus() * 0.5f + 1,
-                                AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ATTACK_SPEED,
-                        new AttributeModifier(BASE_ATTACK_SPEED_ID,
-                                -2.2,
-                                AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ENTITY_INTERACTION_RANGE,
-                        new AttributeModifier(ResourceLocation.parse("iter:bloodletter_reach"),
-                                -0.5,
-                                AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND)
-                .build();
-    }
 }

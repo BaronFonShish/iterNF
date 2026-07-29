@@ -11,12 +11,9 @@ public class NostelonStaff extends SpellFocus {
                 .rarity(Rarity.COMMON)
                 .enchantability(16),
                 2,
-                4,
+                4.5f,
                 0.05f,
-                0.05f,
-                0,
-                0,
-                0
+                0.05f
         );
     }
 }

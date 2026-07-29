@@ -11,6 +11,7 @@ public class ModModelLayers {
         event.registerLayerDefinition(BereftModel.LAYER_LOCATION, BereftModel::createBodyLayer);
         event.registerLayerDefinition(GoblinWarriorModel.LAYER_LOCATION, GoblinWarriorModel::createBodyLayer);
         event.registerLayerDefinition(GoblinModel.LAYER_LOCATION, GoblinModel::createBodyLayer);
+        event.registerLayerDefinition(GoblinSharpshooterModel.LAYER_LOCATION, GoblinSharpshooterModel::createBodyLayer);
         event.registerLayerDefinition(HobGoblinModel.LAYER_LOCATION, HobGoblinModel::createBodyLayer);
 
         event.registerLayerDefinition(EtherboltModel.LAYER_LOCATION, EtherboltModel::createBodyLayer);

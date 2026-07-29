@@ -33,6 +33,7 @@ public class RingEffectManager {
                     AttributeModifier.Operation operation = switch (operationType) {
                         case 1 -> AttributeModifier.Operation.ADD_VALUE;
                         case 2 -> AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
+                        case 3 -> AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
                         default -> AttributeModifier.Operation.ADD_VALUE;
                     };
                     attributeInstance.addTransientModifier(new AttributeModifier(ResourceLocation.parse(id), tierMod, operation));

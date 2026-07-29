@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "iter:bullet"
+    "iter:bullet",
+    "iter:spell_projectile"
   ]
 }

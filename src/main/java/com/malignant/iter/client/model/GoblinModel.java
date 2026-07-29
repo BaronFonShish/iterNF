@@ -1,5 +1,6 @@
 package com.malignant.iter.client.model;
 
+import com.malignant.iter.IterMod;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.AnimationUtils;
@@ -15,7 +16,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.HumanoidArm;
 
 public class GoblinModel<T extends Entity> extends EntityModel<T> implements ArmedModel {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("itermod", "goblin"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(IterMod.MOD_ID, "goblin"), "main");
     private final ModelPart goblin;
     private final ModelPart body;
     private final ModelPart rightArm;

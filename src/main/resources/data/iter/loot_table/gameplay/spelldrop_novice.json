@@ -12,7 +12,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "iter:gameplay/spelldrop_novice_elemental",
+          "value": "iter:gameplay/spelldrop_novice_primal",
           "weight": 12,
           "quality": 1
         },

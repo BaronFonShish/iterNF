@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 public class SpellMend extends SpellItem {
 
     public SpellMend() {
-        super(new Properties(), "arcane", "form","ether", 2, 50, 75, 1800);
+        super(new Properties(), SpellDomain.ARCANE, SpellMethod.FORM, SpellAspect.ETHER, 2, 50, 75, 1800);
     }
 
     @Override
@@ -68,6 +68,11 @@ public class SpellMend extends SpellItem {
             if ((!repaired)||(repairPoints <= 0)) break;
             player.getInventory().setChanged();
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 
     public void repairItem(Player player, ItemStack item, int slot){

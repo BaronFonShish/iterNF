@@ -23,7 +23,7 @@ import java.util.Optional;
 
 public class SpellDischarge extends SpellItem {
 
-    public SpellDischarge() {super(new Properties(), "primal", "force", "lightning", 2, 10, 4, 27);}
+    public SpellDischarge() {super(new Properties(), SpellDomain.PRIMAL, SpellMethod.FORCE, SpellAspect.LIGHTNING, 2, 10, 4, 27);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -96,6 +96,11 @@ public class SpellDischarge extends SpellItem {
             beam.setTargetEntity(target);
         }
                     level.addFreshEntity(beam);
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 
     public float returnDamage(float spellpower, double distance, double range){

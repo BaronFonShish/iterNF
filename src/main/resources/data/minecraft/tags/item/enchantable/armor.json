@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "iter:apprentice_hood",
+    "iter:apprentice_robes",
+    "iter:apprentice_pants",
+    "iter:apprentice_boots",
+    "iter:azure_hood",
+    "iter:azure_mantle",
+    "iter:azure_pants",
+    "iter:azure_boots"
+  ]
+}

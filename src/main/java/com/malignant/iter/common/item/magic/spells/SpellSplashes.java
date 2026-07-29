@@ -24,7 +24,7 @@ import java.util.List;
 
 public class SpellSplashes extends SpellItem {
 
-    public SpellSplashes() {super(new Properties(), "primal", "form", "water",1, 10, 2, 16);}
+    public SpellSplashes() {super(new Properties(), SpellDomain.PRIMAL, SpellMethod.FORM, SpellAspect.WATER,1, 10, 2, 16);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -104,5 +104,10 @@ public class SpellSplashes extends SpellItem {
               }
             }
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

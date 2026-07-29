@@ -1,0 +1,33 @@
+{
+  "name": "iter:wizard_tower/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/foundation",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/foundation1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/foundation2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    }
+  ]
+}

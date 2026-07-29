@@ -27,4 +27,8 @@ public class ModStructures {
     public static final Supplier<StructureType<JigsawStructure>> SMALL_GENERIC_DUNGEON =
             STRUCTURE_TYPES.register("small_generic_dungeon",
                     () -> () -> JigsawStructure.CODEC);
+
+    public static final Supplier<StructureType<JigsawStructure>> WIZARD_TOWER =
+            STRUCTURE_TYPES.register("wizard_tower",
+                    () -> () -> JigsawStructure.CODEC);
 }

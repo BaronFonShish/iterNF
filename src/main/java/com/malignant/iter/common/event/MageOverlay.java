@@ -44,7 +44,7 @@ public class MageOverlay {
         event.getGuiGraphics().drawString(mc.font, spellNumber, 11, 42, -16737844, false);
 
         String spellName = MageOverlayUtils.SpellName(player);
-        event.getGuiGraphics().drawString(mc.font, spellName, 23, 42, -3381505, false);
+        event.getGuiGraphics().drawString(mc.font, spellName, 23, 42, 0xFFFFFFFF, false);
 
         event.getGuiGraphics().blit(ETHERBAR_FULL, 9, 8, 0, 0, 83 - progress, 9, 83, 9);
     }

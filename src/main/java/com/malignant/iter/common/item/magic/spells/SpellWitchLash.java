@@ -23,7 +23,7 @@ import java.util.List;
 public class SpellWitchLash extends SpellItem {
 
     public SpellWitchLash() {
-        super(new Properties(), "occult", "force", "entropy",1, 8, 1, 8);
+        super(new Properties(), SpellDomain.OCCULT, SpellMethod.FORCE, SpellAspect.ENTROPY,1, 8, 1, 8);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class SpellWitchLash extends SpellItem {
                 for (Entity entityiterator : entfound) {
                     if ((entityiterator instanceof LivingEntity) && !(player == entityiterator)) {
                         entityiterator.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC), player),
-                                3f * spellpower);
+                                3.5f * spellpower);
                         if (level instanceof ServerLevel serverLevel) {
                                  serverLevel.sendParticles(ParticleTypes.WITCH, player.getX() + xdir * dist, yheight + ydir * dist, player.getZ() + zdir * dist, 8, 0.025, 0.025, 0.025, 0.025);
                              }
@@ -71,5 +71,10 @@ public class SpellWitchLash extends SpellItem {
                     dist = dist + 0.2f;
             }
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

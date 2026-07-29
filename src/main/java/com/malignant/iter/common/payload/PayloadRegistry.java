@@ -43,6 +43,16 @@ public class PayloadRegistry {
             });
         });
 
+        registrar.playBidirectional(CurrentSpellPayload.TYPE, CurrentSpellPayload.STREAM_CODEC, (payload, context) -> {
+            context.enqueueWork(() -> {
+                Player player = context.player();
+                IterPlayerData data = ModCapabilities.getMageData(player);
+                if (data != null) {
+                    data.setCurrentSpell(payload.spellStack());
+                }
+            });
+        });
+
         registrar.playBidirectional(SpellLuckPayload.TYPE, SpellLuckPayload.STREAM_CODEC, (payload, context) -> {
             context.enqueueWork(() -> {
                 Player player = context.player();
@@ -70,6 +80,7 @@ public class PayloadRegistry {
                 }
             });
         });
+
 
         registrar.playBidirectional(SpellweaverSwitchSyncPayload.TYPE, SpellweaverSwitchSyncPayload.STREAM_CODEC, (payload, context) -> {
             context.enqueueWork(() -> {

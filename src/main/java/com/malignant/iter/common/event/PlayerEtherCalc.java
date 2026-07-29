@@ -1,8 +1,13 @@
 package com.malignant.iter.common.event;
 
 import com.malignant.iter.IterMod;
+import com.malignant.iter.common.registry.ModEffects;
 import com.malignant.iter.common.variables.IterPlayerDataUtils;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.GameType;
@@ -44,6 +49,8 @@ public class PlayerEtherCalc {
         }
     }
 
+    private static final Holder<MobEffect> EFFECT_HOLDER = ModEffects.ETHER_BURNOUT;
+
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         if (!event.getEntity().level().isClientSide() && event.getEntity() instanceof ServerPlayer player) {
@@ -72,19 +79,20 @@ public class PlayerEtherCalc {
                 if (gameMode == GameType.SURVIVAL || gameMode == GameType.ADVENTURE) {
                     float currentBurnout = IterPlayerDataUtils.getBurnout(player);
 
-                    if (currentBurnout >= threshold_1) {
-                        player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 50, 0, false, true));
-                        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 25, 0, false, true));
-                        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20, 0, false, true)); // CONFUSION -> NAUSEA
-                    }
-                    if (currentBurnout >= threshold_2) {
-                        player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 25, 1, false, true));
-                        player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 40, 0, false, true));
-                        player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 25, 1, false, true));
-                    }
+
                     if (currentBurnout >= threshold_3) {
-                        if (!player.hasEffect(MobEffects.WITHER)) {
-                            player.addEffect(new MobEffectInstance(MobEffects.WITHER, 40, 0, false, true));
+                        if (!player.hasEffect(Holder.direct(ModEffects.ETHER_BURNOUT.get()))) {
+                            player.addEffect(new MobEffectInstance(EFFECT_HOLDER, 40, 2, false, true));
+                        }
+                    } else
+                    if (currentBurnout >= threshold_2) {
+                        if (!player.hasEffect(Holder.direct(ModEffects.ETHER_BURNOUT.get()))){
+                            player.addEffect(new MobEffectInstance(EFFECT_HOLDER, 40, 1, false, true));
+                        }
+                    } else
+                    if (currentBurnout >= threshold_1) {
+                        if (!player.hasEffect(Holder.direct(ModEffects.ETHER_BURNOUT.get()))) {
+                            player.addEffect(new MobEffectInstance(EFFECT_HOLDER, 40, 0, false, true));
                         }
                     }
                 }

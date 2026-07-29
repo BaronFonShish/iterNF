@@ -30,16 +30,22 @@ public class ModEntities {
                             .sized(1.5f, 1.4f)
                             .build("giant_spider"));
 
+//    public static final DeferredHolder<EntityType<?>, EntityType<ThornbackEntity>> THORNBACK =
+//            ENTITY_TYPES.register("thornback",
+//                    () -> EntityType.Builder.of(ThornbackEntity::new, MobCategory.MONSTER)
+//                            .sized(1.9f, 2.25f)
+//                            .build("thornback"));
+
     public static final DeferredHolder<EntityType<?>, EntityType<GhoulEntity>> GHOUL =
             ENTITY_TYPES.register("ghoul",
-                    () -> EntityType.Builder.<GhoulEntity>of(GhoulEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(GhoulEntity::new, MobCategory.MONSTER)
                             .setTrackingRange(64)
                             .sized(0.6f, 1.975f)
                             .build("ghoul"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DarkSorcererEntity>> DARK_SORCERER =
             ENTITY_TYPES.register("dark_sorcerer",
-                    () -> EntityType.Builder.<DarkSorcererEntity>of(DarkSorcererEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(DarkSorcererEntity::new, MobCategory.MONSTER)
                             .setTrackingRange(64)
                             .sized(0.6f, 1.975f)
                             .build("dark_sorcerer"));
@@ -53,17 +59,24 @@ public class ModEntities {
 
     public static final DeferredHolder<EntityType<?>, EntityType<GoblinWarriorEntity>> GOBLIN_WARRIOR =
             ENTITY_TYPES.register("goblin_warrior",
-                    () -> EntityType.Builder.<GoblinWarriorEntity>of(GoblinWarriorEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(GoblinWarriorEntity::new, MobCategory.MONSTER)
                             .setTrackingRange(64)
                             .sized(0.5f, 1f)
                             .build("goblin_warrior"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<GoblinEntity>> GOBLIN =
             ENTITY_TYPES.register("goblin",
-                    () -> EntityType.Builder.<GoblinEntity>of(GoblinEntity::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(GoblinEntity::new, MobCategory.MONSTER)
                             .setTrackingRange(64)
                             .sized(0.5f, 0.9f)
                             .build("goblin"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<GoblinSharpshooterEntity>> GOBLIN_SHARPSHOOTER =
+            ENTITY_TYPES.register("goblin_sharpshooter",
+                    () -> EntityType.Builder.<GoblinSharpshooterEntity>of(GoblinSharpshooterEntity::new, MobCategory.MONSTER)
+                            .setTrackingRange(64)
+                            .sized(0.5f, 1f)
+                            .build("goblin_sharpshooter"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<HobGoblinEntity>> HOBGOBLIN =
             ENTITY_TYPES.register("hobgoblin",

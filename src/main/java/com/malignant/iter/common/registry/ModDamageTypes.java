@@ -17,6 +17,14 @@ public class ModDamageTypes {
             ResourceKey.create(Registries.DAMAGE_TYPE,
                     ResourceLocation.fromNamespaceAndPath(IterMod.MOD_ID, "bullet"));
 
+    public static final ResourceKey<DamageType> SPELL =
+            ResourceKey.create(Registries.DAMAGE_TYPE,
+                    ResourceLocation.fromNamespaceAndPath(IterMod.MOD_ID, "spell"));
+
+    public static final ResourceKey<DamageType> SPELL_PROJECTILE =
+            ResourceKey.create(Registries.DAMAGE_TYPE,
+                    ResourceLocation.fromNamespaceAndPath(IterMod.MOD_ID, "spell_projectile"));
+
     public static void register(IEventBus eventBus) {
         DAMAGE_TYPES.register(eventBus);
     }

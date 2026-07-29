@@ -13,6 +13,8 @@ public class IterPlayerData implements INBTSerializable<CompoundTag> {
     private boolean spellweaverSwitch = false;
     private float flighttime = 0.0f;
     private boolean flying = false;
+    private ItemStack currentSpell = ItemStack.EMPTY;
+
 
     public float getEtherBurnout() { return etherBurnout; }
     public void setEtherBurnout(float burnout) { this.etherBurnout = Math.max(0, burnout); }
@@ -27,14 +29,17 @@ public class IterPlayerData implements INBTSerializable<CompoundTag> {
     public void setFlightTime(float flighttime) { this.flighttime = Math.max(0, flighttime); }
     public boolean getFlying() { return flying; }
     public void setFlying(boolean flying) { this.flying = flying; }
-
-
+    public ItemStack getCurrentSpell() { return currentSpell; }
 
     public int getSelectedSpellSlot() { return selectedSpellSlot; }
     public void setSelectedSpellSlot(int slot) { this.selectedSpellSlot = slot; }
 
     public ItemStack getSelectedSpellBook() { return selectedSpellBook; }
     public void setSelectedSpellBook(ItemStack book) { this.selectedSpellBook = book; }
+
+    public void setCurrentSpell(ItemStack spell) {
+        this.currentSpell = spell.copy();
+    }
 
 
     public void copyFrom(IterPlayerData source) {
@@ -45,6 +50,7 @@ public class IterPlayerData implements INBTSerializable<CompoundTag> {
         this.spellweaverSwitch = source.spellweaverSwitch;
         this.flighttime = source.flighttime;
         this.flying = source.flying;
+        this.currentSpell = source.currentSpell.copy();
     }
 
     @Override
@@ -61,6 +67,12 @@ public class IterPlayerData implements INBTSerializable<CompoundTag> {
             CompoundTag bookTag = new CompoundTag();
             selectedSpellBook.save(lookupProvider, bookTag);
             nbt.put("SelectedSpellBook", bookTag);
+        }
+
+        if (!currentSpell.isEmpty()) {
+            CompoundTag spellTag = new CompoundTag();
+            currentSpell.save(lookupProvider, spellTag);
+            nbt.put("CurrentSpell", spellTag);
         }
         return nbt;
     }
@@ -79,5 +91,10 @@ public class IterPlayerData implements INBTSerializable<CompoundTag> {
         } else {
             selectedSpellBook = ItemStack.EMPTY;
         }
+
+        if (nbt.contains("CurrentSpell")) {
+            currentSpell = ItemStack.parse(lookupProvider, nbt.getCompound("CurrentSpell")).orElse(ItemStack.EMPTY);
+        }
+
     }
 }

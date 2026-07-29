@@ -12,7 +12,7 @@
           "base": 0.05,
           "per_level_above_first": 0.025
         },
-        "attribute": "iter:ranged_damage",
+        "attribute": "iter:bullet_damage",
         "operation": "add_multiplied_base"
       }
     ]
@@ -26,10 +26,10 @@
     "base": 10,
     "per_level_above_first": 10
   },
-  "primary_items": "#iter:gun",
+  "primary_items": "#iter:enchantable/gun",
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#iter:gun",
+  "supported_items": "#iter:enchantable/gun",
   "weight": 5
 }

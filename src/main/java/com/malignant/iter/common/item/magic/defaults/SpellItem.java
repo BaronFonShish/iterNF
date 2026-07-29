@@ -25,12 +25,12 @@ public abstract class SpellItem extends Item{
     private final int castTime;
     private final int cooldown;
     private final int etherCost;
-    private final String domain;
-    private final String method;
-    private final String aspect;
+    private final SpellDomain domain;
+    private final SpellMethod method;
+    private final SpellAspect aspect;
     private final int tier;
 
-    public SpellItem(Properties properties, String domain, String method, String aspect, int tier, int castTime, int etherCost, int cooldown) {
+    public SpellItem(Properties properties, SpellDomain domain, SpellMethod method, SpellAspect aspect, int tier, int castTime, int etherCost, int cooldown) {
         super(properties.stacksTo(1));
         this.castTime = castTime;
         this.etherCost = etherCost;
@@ -39,6 +39,18 @@ public abstract class SpellItem extends Item{
         this.method = method;
         this.aspect = aspect;
         this.tier = tier;
+    }
+
+    public enum SpellDomain{
+        ARCANE, PRIMAL, OCCULT;
+    }
+
+    public enum SpellMethod{
+        FORCE, FORM, BODY, CONVEYANCE;
+    }
+
+    public enum SpellAspect{
+        EARTH, WATER, AIR, FIRE, FROST, LIGHTNING, ETHER, LIFE, ENTROPY;
     }
 
     public float getCastTimeBase(){
@@ -50,13 +62,13 @@ public abstract class SpellItem extends Item{
     public float getEtherCostBase(){
         return this.etherCost;
     }
-    public String getDomain(){
+    public SpellDomain getDomain(){
         return this.domain;
     }
-    public String getMethod(){
+    public SpellMethod getMethod(){
         return this.method;
     }
-    public String getAspect(){
+    public SpellAspect getAspect(){
         return this.aspect;
     }
     public int getTier(){
@@ -143,13 +155,13 @@ public abstract class SpellItem extends Item{
 
             String baseKey = BuiltInRegistries.ITEM.getKey(this).getNamespace() + "." + BuiltInRegistries.ITEM.getKey(this).getPath();
 
-            String domainKey = "iterpg.spell.domain." + this.getDomain();
-            String methodKey = "iterpg.spell.method." + this.getMethod();
-            String aspectKey = "iterpg.spell.aspect." + this.getAspect();
+            String domainKey = "iterpg.spell.domain." + this.getDomain().toString().toLowerCase();
+            String methodKey = "iterpg.spell.method." + this.getMethod().toString().toLowerCase();
+            String aspectKey = "iterpg.spell.aspect." + this.getAspect().toString().toLowerCase();
             Component SpellInfo = Component.translatable("iterpg.spell.info",
-                    Component.empty().append(returnSymbol(this.domain)).append(Component.translatable(domainKey)),
-                    Component.empty().append(returnSymbol(this.method)).append(Component.translatable(methodKey)),
-                    Component.empty().append(returnSymbol(this.aspect)).append(Component.translatable(aspectKey)));
+                    Component.empty().append(returnSymbolDomain(this.domain)).append(Component.translatable(domainKey)),
+                    Component.empty().append(returnSymbolMethod(this.method)).append(Component.translatable(methodKey)),
+                    Component.empty().append(returnSymbolAspect(this.aspect)).append(Component.translatable(aspectKey)));
 
             int quality = getQuality(itemstack);
             Component qualityText = Component.translatable("iterpg.spell.quality")
@@ -176,7 +188,9 @@ public abstract class SpellItem extends Item{
         if (shiftheld) {
             list.add(SpellInfo);
         } else {
-            Component SpellPictures = Component.empty().append(returnSymbol(this.domain)).append(returnSymbol(this.method)).append(returnSymbol(this.aspect));
+            Component SpellPictures = Component.empty().append(returnSymbolDomain(this.domain))
+                    .append(returnSymbolMethod(this.method))
+                    .append(returnSymbolAspect(this.aspect));
             list.add(SpellPictures);
         }
         list.add(qualityText);
@@ -255,12 +269,12 @@ public abstract class SpellItem extends Item{
             case "body" -> Pictograms.IM_BODY;
             case "conveyance" -> Pictograms.IM_CONVEYANCE;
 
+            case "earth" -> Pictograms.IA_EARTH;
+            case "water" -> Pictograms.IA_WATER;
+            case "air" -> Pictograms.IA_AIR;
             case "fire" -> Pictograms.IA_FIRE;
             case "frost" -> Pictograms.IA_FROST;
             case "lightning" -> Pictograms.IA_LIGHTNING;
-            case "water" -> Pictograms.IA_WATER;
-            case "air" -> Pictograms.IA_AIR;
-            case "earth" -> Pictograms.IA_EARTH;
             case "ether" -> Pictograms.IA_ETHER;
             case "life" -> Pictograms.IA_LIFE;
             case "entropy" -> Pictograms.IA_ENTROPY;
@@ -271,7 +285,48 @@ public abstract class SpellItem extends Item{
         return Pictograms.getIcon(icon);
     }
 
+    public MutableComponent returnSymbolDomain(SpellDomain type){
+        char icon = switch (type){
+            case ARCANE -> Pictograms.ID_ARCANE;
+            case PRIMAL -> Pictograms.ID_PRIMAL;
+            case OCCULT -> Pictograms.ID_OCCULT;
+
+            default -> Pictograms.ID_ARCANE;
+        };
+        return Pictograms.getIcon(icon);
+    }
+
+    public MutableComponent returnSymbolMethod(SpellMethod type){
+        char icon = switch (type){
+            case FORCE -> Pictograms.IM_FORCE;
+            case FORM -> Pictograms.IM_FORM;
+            case BODY -> Pictograms.IM_BODY;
+            case CONVEYANCE -> Pictograms.IM_CONVEYANCE;
+
+            default -> Pictograms.IM_FORCE;
+        };
+        return Pictograms.getIcon(icon);
+    }
+
+    public MutableComponent returnSymbolAspect(SpellAspect type){
+        char icon = switch (type){
+            case EARTH -> Pictograms.IA_EARTH;
+            case WATER -> Pictograms.IA_WATER;
+            case AIR -> Pictograms.IA_AIR;
+            case FIRE -> Pictograms.IA_FIRE;
+            case FROST -> Pictograms.IA_FROST;
+            case LIGHTNING -> Pictograms.IA_LIGHTNING;
+            case ETHER -> Pictograms.IA_ETHER;
+            case LIFE -> Pictograms.IA_LIFE;
+            case ENTROPY -> Pictograms.IA_ENTROPY;
+
+            default -> Pictograms.IA_FIRE;
+        };
+        return Pictograms.getIcon(icon);
+    }
+
     public abstract void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower);
+    public abstract void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks);
 
     @Override
     public boolean isEnchantable(ItemStack stack) {

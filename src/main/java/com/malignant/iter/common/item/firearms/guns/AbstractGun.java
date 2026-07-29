@@ -3,25 +3,28 @@ package com.malignant.iter.common.item.firearms.guns;
 import com.malignant.iter.common.entity.projectile.AbstractBullet;
 import com.malignant.iter.common.item.firearms.ammo.*;
 import com.malignant.iter.common.misc.Pictograms;
-import com.malignant.iter.common.registry.ModAttributes;
-import com.malignant.iter.common.registry.ModDataComponents;
-import com.malignant.iter.common.registry.ModSounds;
+import com.malignant.iter.common.registry.*;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.extensions.IItemExtension;
 import org.jetbrains.annotations.NotNull;
 
@@ -67,7 +70,7 @@ public abstract class AbstractGun extends Item implements IItemExtension {
     public @NotNull ItemAttributeModifiers getDefaultAttributeModifiers() {
         ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
 
-        builder.add(ModAttributes.RANGED_DAMAGE,
+        builder.add(ModAttributes.BULLET_DAMAGE,
                 new AttributeModifier(ResourceLocation.parse("iter:ranged_damage"), (this.basedamage + 1) - 1, AttributeModifier.Operation.ADD_VALUE),
                 EquipmentSlotGroup.MAINHAND);
 
@@ -250,8 +253,9 @@ public abstract class AbstractGun extends Item implements IItemExtension {
             return;
         }
 
-        AttributeInstance rangedDamage = player.getAttribute(ModAttributes.RANGED_DAMAGE);
-        float totalDamage = (float) (rangedDamage.getValue() + round.getBasedamage());
+        AttributeInstance rangedDamage = player.getAttribute(ModAttributes.BULLET_DAMAGE);
+        AttributeInstance rangedDamageMult = player.getAttribute(ModAttributes.RANGED_DAMAGE_MULTIPLIER);
+        float totalDamage = (float) (rangedDamage.getValue() + round.getBasedamage())* (float) rangedDamageMult.getValue();
         totalDamage = totalDamage/round.getProjectiles();
 
         float totalVelocity = this.velocity + round.getVelocity();
@@ -270,8 +274,16 @@ public abstract class AbstractGun extends Item implements IItemExtension {
         }
 
         shootEffects(level, player, gun, round);
+        muzzleEffects(level, player);
+
+        if (ammoStack.is(ModTags.Items.COPPER_ROUNDS) && !player.isCreative()){
+            ItemEntity casing = new ItemEntity(level, player.getX(), player.getEyeY(), player.getZ(), ModItems.COPPER_CASING.get().getDefaultInstance());
+            casing.setPickUpDelay(50);
+            level.addFreshEntity(casing);
+        }
 
         magazine.removeFirst();
+
         setMagazine(gun, magazine);
         if (isMagazineEmpty(gun)){
             setReloaded(gun, 0);
@@ -286,6 +298,36 @@ public abstract class AbstractGun extends Item implements IItemExtension {
     }
 
     public void shootEffects(Level level, Player entity, ItemStack gun, Item round){
+
+    }
+
+    public void muzzleEffects(Level level, Player player){
+
+        Vec3 lookDirection = player.getLookAngle();
+        Vec3 up = new Vec3(0, 1, 0);
+        Vec3 side = up.cross(lookDirection).normalize();
+        Vec3 startPos = player.getEyePosition();
+        float down_offset = -0.25f;
+        float side_offset = 0.25f;
+        float front_offset = 0.2f;
+        if (player.getMainArm() == HumanoidArm.RIGHT){
+            side_offset *= -1;
+        }
+
+        startPos = startPos
+                .add(lookDirection.scale(front_offset))
+                .add(side.scale(side_offset)
+                        .add(0, down_offset, 0));
+
+        for (int i = 0; i < 8; i++) {
+            RandomSource r = level.random;
+            float spread = 0.35f;
+            float velocity = r.nextFloat()/5 + 0.35f;
+            Vec3 randdir = lookDirection.add((r.nextFloat() - 0.5)*spread, (r.nextFloat() - 0.5)*spread, (r.nextFloat() - 0.5)*spread);
+            level.addParticle(ParticleTypes.LARGE_SMOKE, startPos.x, startPos.y, startPos.z,
+                    randdir.x*velocity, randdir.y*velocity, randdir.z*velocity);
+
+        }
     }
 
     public void reloadStart(Level level, Player player, ItemStack gun){

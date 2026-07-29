@@ -49,4 +49,10 @@ public class RingEffectStorage {
                 ModItems.IRON_RING_SANGUARNET.get(), ModItems.GOLDEN_RING_SANGUARNET.get(), ModItems.NETHERITE_RING_SANGUARNET.get(),
                 0.1f, 0.15f, 0.2f, slotContext.entity(), 1);
     }
+
+    public static void flint(SlotContext slotContext) {
+        RingEffectManager.tieredRingStuff("iter_ring_ranged_damage", ModAttributes.RANGED_DAMAGE_MULTIPLIER,
+                ModItems.IRON_RING_FLINT.get(), ModItems.GOLDEN_RING_FLINT.get(), ModItems.NETHERITE_RING_FLINT.get(),
+                0.05f, 0.075f, 0.1f, slotContext.entity(), 1);
+    }
 }

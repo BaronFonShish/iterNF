@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -68,11 +69,6 @@ public class FrostSpikeEntity extends AbstractMagicProjectile {
         this.particleBurst(32);
         float power = (0.5f + this.getProjectileDamage()/10);
         areaEffect(power);
-    }
-
-    @Override
-    protected ItemStack getDefaultPickupItem() {
-        return null;
     }
 
     public void particleBurst(int k){

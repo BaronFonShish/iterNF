@@ -13,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class SpellLeap extends SpellItem {
 
-    public SpellLeap() {super(new Properties(), "arcane", "conveyance", "air",2, 5, 7, 75);}
+    public SpellLeap() {super(new Properties(), SpellDomain.ARCANE, SpellMethod.CONVEYANCE, SpellAspect.AIR,2, 5, 7, 75);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -49,5 +49,10 @@ public class SpellLeap extends SpellItem {
                     16,
                     0.15, 0.05, 0.15, 0.05);
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

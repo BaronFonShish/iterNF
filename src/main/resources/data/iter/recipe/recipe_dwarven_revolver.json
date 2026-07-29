@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    "  c",
+    "iis",
+    " cc"
+  ],
+  "key": {
+    "c": {
+      "item": "iter:dwarven_components"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "id": "iter:dwarven_revolver",
+    "count": 1
+  }
+}

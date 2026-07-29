@@ -1,0 +1,150 @@
+{
+  "name": "iter:wizard_tower/tower",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/kitchen",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/kitchen1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/kitchen2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/kitchen_ruins",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/living_area",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/living_area1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/living_area2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/living_area_ruins",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/observatory",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/observatory1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/observatory2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/observatory_ruins",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/roof",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/roof1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/roof2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/roof_ruins",
+        "processors": "iter:wizard_lab_processor"
+      }
+    }
+  ]
+}

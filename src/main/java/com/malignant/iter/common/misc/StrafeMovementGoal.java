@@ -22,11 +22,13 @@ public class StrafeMovementGoal<T extends net.minecraft.world.entity.Mob> extend
     }
 
     public boolean canUse() {
-        return this.mob.getTarget() != null;
+        return this.mob.getTarget() != null && this.mob.getTarget().isAlive();
     }
 
     public boolean canContinueToUse() {
-        return this.canUse() || !this.mob.getNavigation().isDone();
+        return this.mob.getTarget() != null &&
+                this.mob.getTarget().isAlive() &&
+                (this.canUse() || !this.mob.getNavigation().isDone());
     }
 
     public void start() {

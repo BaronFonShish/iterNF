@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 public class SpellLegacyFireball extends SpellItem {
 
-    public SpellLegacyFireball() {super(new Properties(), "primal", "force", "fire",3, 28, 8, 120);}
+    public SpellLegacyFireball() {super(new Properties(), SpellDomain.PRIMAL, SpellMethod.FORCE, SpellAspect.FIRE,3, 28, 8, 120);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -25,5 +25,10 @@ public class SpellLegacyFireball extends SpellItem {
                     SoundEvents.FIRECHARGE_USE,
                     SoundSource.PLAYERS, 0.75f, 0.85f);
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

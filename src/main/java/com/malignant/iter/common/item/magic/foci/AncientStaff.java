@@ -13,10 +13,7 @@ public class AncientStaff extends SpellFocus {
                 2,
                 4.5f,
                 -0.1f,
-                -0.05f,
-                0,
-                0.15f,
-                0
+                -0.05f
         );
     }
 }

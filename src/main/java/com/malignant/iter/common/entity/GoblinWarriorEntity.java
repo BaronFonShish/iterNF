@@ -2,6 +2,7 @@ package com.malignant.iter.common.entity;
 
 import com.malignant.iter.common.registry.ModItems;
 import com.malignant.iter.common.registry.ModSounds;
+import com.malignant.iter.common.registry.ModTags;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -52,7 +53,18 @@ public class GoblinWarriorEntity extends Monster {
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
 
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this) {
+            @Override
+            public boolean canUse() {
+                LivingEntity attacker = this.mob.getLastAttacker();
+                if (attacker != null) {
+                    if (attacker.getType().is(ModTags.EntityTypes.GOBLINS)) {
+                        return false;
+                    }
+                }
+                return super.canUse();
+            }
+        });
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Villager .class, true, false));

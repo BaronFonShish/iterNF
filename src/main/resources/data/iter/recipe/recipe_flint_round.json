@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "tag": "iter:propellant"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ],
+  "result": {
+    "id": "iter:flint_round",
+    "count": 4
+  }
+}

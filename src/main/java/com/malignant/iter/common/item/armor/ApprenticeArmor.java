@@ -10,17 +10,22 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 public abstract class ApprenticeArmor extends ArmorItem {
 
     public ApprenticeArmor(Type type, Properties properties) {
-        super(ModArmorMaterials.APPRENTICE, type, properties);
+        super(ModArmorMaterials.APPRENTICE.getDelegate(), type, properties.stacksTo(1));
     }
 
     public static class Helmet extends ApprenticeArmor {
-        public Helmet() {
-            super(Type.HELMET, new Properties());
+        public Helmet(Properties properties) {
+            super(Type.HELMET, properties);
         }
 
         @Override
         public ItemAttributeModifiers getDefaultAttributeModifiers() {
             ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+
+            ItemAttributeModifiers defaultModifiers = super.getDefaultAttributeModifiers();
+            for (ItemAttributeModifiers.Entry entry : defaultModifiers.modifiers()) {
+                builder.add(entry.attribute(), entry.modifier(), entry.slot());
+            }
 
             builder.add(ModAttributes.ETHER_BURNOUT_THRESHOLD,
                     new AttributeModifier(ResourceLocation.parse("iter:armor_head_threshold"),
@@ -52,13 +57,18 @@ public abstract class ApprenticeArmor extends ArmorItem {
     }
 
     public static class Chestplate extends ApprenticeArmor {
-        public Chestplate() {
-            super(Type.CHESTPLATE, new Properties());
+        public Chestplate(Properties properties) {
+            super(Type.CHESTPLATE, properties);
         }
 
         @Override
         public ItemAttributeModifiers getDefaultAttributeModifiers() {
             ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+
+            ItemAttributeModifiers defaultModifiers = super.getDefaultAttributeModifiers();
+            for (ItemAttributeModifiers.Entry entry : defaultModifiers.modifiers()) {
+                builder.add(entry.attribute(), entry.modifier(), entry.slot());
+            }
 
             builder.add(ModAttributes.ETHER_BURNOUT_THRESHOLD,
                     new AttributeModifier(ResourceLocation.parse("iter:armor_chest_threshold"),
@@ -90,13 +100,18 @@ public abstract class ApprenticeArmor extends ArmorItem {
     }
 
     public static class Leggings extends ApprenticeArmor {
-        public Leggings() {
-            super(Type.LEGGINGS, new Properties());
+        public Leggings(Properties properties) {
+            super(Type.LEGGINGS, properties);
         }
 
         @Override
         public ItemAttributeModifiers getDefaultAttributeModifiers() {
             ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+
+            ItemAttributeModifiers defaultModifiers = super.getDefaultAttributeModifiers();
+            for (ItemAttributeModifiers.Entry entry : defaultModifiers.modifiers()) {
+                builder.add(entry.attribute(), entry.modifier(), entry.slot());
+            }
 
             builder.add(ModAttributes.ETHER_BURNOUT_THRESHOLD,
                     new AttributeModifier(ResourceLocation.parse("iter:armor_legs_threshold"),
@@ -128,13 +143,18 @@ public abstract class ApprenticeArmor extends ArmorItem {
     }
 
     public static class Boots extends ApprenticeArmor {
-        public Boots() {
-            super(Type.BOOTS, new Properties());
+        public Boots(Properties properties) {
+            super(Type.BOOTS, properties);
         }
 
         @Override
         public ItemAttributeModifiers getDefaultAttributeModifiers() {
             ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+
+            ItemAttributeModifiers defaultModifiers = super.getDefaultAttributeModifiers();
+            for (ItemAttributeModifiers.Entry entry : defaultModifiers.modifiers()) {
+                builder.add(entry.attribute(), entry.modifier(), entry.slot());
+            }
 
             builder.add(ModAttributes.ETHER_BURNOUT_THRESHOLD,
                     new AttributeModifier(ResourceLocation.parse("iter:armor_feet_threshold"),

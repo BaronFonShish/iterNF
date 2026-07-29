@@ -13,10 +13,7 @@ public class DiamondStaff extends SpellFocus {
                 3,
                 5,
                 0.1f,
-                0.05f,
-                0,
-                0,
-                0
+                0.05f
         );
     }
 }

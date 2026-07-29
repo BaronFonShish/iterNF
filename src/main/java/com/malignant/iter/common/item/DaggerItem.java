@@ -58,16 +58,12 @@ public class DaggerItem extends TieredItem {
     }
 
     public static ItemAttributeModifiers createAttributes(Tier tier) {
-
         return ItemAttributeModifiers.builder()
                 .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID,
-                        tier.getAttackDamageBonus() * 0.5f + 1, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                        (tier.getAttackDamageBonus()+2)/2 + 1, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
 
                 .add(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID,
-                        -2d, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-
-                .add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(ResourceLocation.parse("iter:attack_range"),
-                        -0.5d, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
+                        -2d, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
     }
 
     @Override

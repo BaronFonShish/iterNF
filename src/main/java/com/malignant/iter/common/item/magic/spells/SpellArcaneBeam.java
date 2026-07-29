@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class SpellArcaneBeam extends SpellItem {
 
-    public SpellArcaneBeam() {super(new Properties(), "arcane", "force", "ether", 3, 15, 5, 35);}
+    public SpellArcaneBeam() {super(new Properties(), SpellDomain.ARCANE, SpellMethod.FORCE, SpellAspect.ETHER, 3, 15, 5, 35);}
 
 
     @Override
@@ -103,6 +103,10 @@ public class SpellArcaneBeam extends SpellItem {
         StraightBeam beam = new StraightBeam(level, startPos, endPos, 10, 0.15f * spellpower, 0.85f,
                 false, true, false, true, "beam");
         level.addFreshEntity(beam);
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
     }
 
 }

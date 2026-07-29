@@ -26,6 +26,7 @@ public class IterModConfig {
         private final ModConfigSpec.BooleanValue abyssquartzGrowth;
         private final ModConfigSpec.BooleanValue giantSpiders;
         private final ModConfigSpec.BooleanValue ghouls;
+        private final ModConfigSpec.BooleanValue goblinPatrols;
 
         private Common(ModConfigSpec.Builder builder) {
             builder.comment("Common configuration for Iter").push("iter");
@@ -64,6 +65,9 @@ public class IterModConfig {
             ghouls = builder
                     .comment("Enable Ghouls spawning")
                     .define("ghouls", true);
+            goblinPatrols = builder
+                    .comment("Enable Goblin patrols")
+                    .define("goblinPatrols", true);
             builder.pop();
 
             builder.pop();
@@ -80,6 +84,7 @@ public class IterModConfig {
         public static boolean abyssquartzGrowth() { return INSTANCE.abyssquartzGrowth.get(); }
         public static boolean giantSpiders() { return INSTANCE.giantSpiders.get(); }
         public static boolean ghouls() { return INSTANCE.ghouls.get(); }
+        public static boolean goblinPatrols() { return INSTANCE.goblinPatrols.get(); }
     }
 
     public static void register(ModContainer modContainer) {

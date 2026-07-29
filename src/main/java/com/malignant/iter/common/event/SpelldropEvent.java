@@ -34,7 +34,7 @@ public class SpelldropEvent {
                 LivingEntity victim = event.getEntity();
                 boolean drop = false;
                 float luck = IterPlayerDataUtils.getSpellLuck(player);
-                if (luck >= Math.random()*1000 + 100){
+                if (luck >= Math.random() * 1000 + 100){
                     drop = true;
                 }
                 if (drop){spelldrop(victim, level);}
@@ -49,10 +49,11 @@ public class SpelldropEvent {
 
     public static void spelldrop(Entity target, Level level) {
         ResourceLocation lootpath = ResourceLocation.parse("iter:gameplay/spelldrop_novice");
-        if (Math.random() < 0.3d) {
+        double chance = Math.random();
+        if (chance < 0.5d) {
             lootpath = ResourceLocation.parse("iter:gameplay/spelldrop_adept");
         }
-        if (Math.random() < 0.05d) {
+        if (chance < 0.1d) {
             lootpath = ResourceLocation.parse("iter:gameplay/spelldrop_expert");
         }
         ResourceKey<LootTable> lootKey = ResourceKey.create(net.minecraft.core.registries.Registries.LOOT_TABLE, lootpath);

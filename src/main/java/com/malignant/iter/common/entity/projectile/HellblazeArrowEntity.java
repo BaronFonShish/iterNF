@@ -19,6 +19,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
+
 public class HellblazeArrowEntity extends AbstractArrow implements ItemSupplier {
 
     public static final ItemStack PROJECTILE_ITEM = new ItemStack(ModItems.HELLBLAZE_ARROW.get());
@@ -29,6 +31,14 @@ public class HellblazeArrowEntity extends AbstractArrow implements ItemSupplier 
 
     public HellblazeArrowEntity(EntityType<? extends HellblazeArrowEntity> type, LivingEntity entity, Level world) {
         super(type, world);
+    }
+
+    public HellblazeArrowEntity(Level p_36861_, double p_345459_, double p_346135_, double p_345618_, ItemStack p_309188_, @Nullable ItemStack p_345233_) {
+        super(ModEntities.HELLBLAZE_ARROW.get(), p_345459_, p_346135_, p_345618_, p_36861_, p_309188_, p_345233_);
+    }
+
+    public HellblazeArrowEntity(Level p_36866_, LivingEntity p_345746_, ItemStack p_309200_, @Nullable ItemStack p_345461_) {
+        super(ModEntities.HELLBLAZE_ARROW.get(), p_345746_, p_36866_, p_309200_, p_345461_);
     }
 
     @Override
@@ -43,7 +53,7 @@ public class HellblazeArrowEntity extends AbstractArrow implements ItemSupplier 
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return null;
+        return ModItems.HELLBLAZE_ARROW.get().getDefaultInstance();
     }
 
     @Override
@@ -73,8 +83,7 @@ public class HellblazeArrowEntity extends AbstractArrow implements ItemSupplier 
         double offsetX = (this.random.nextDouble() - 0.5) * 0.2;
         double offsetY = (this.random.nextDouble() - 0.5) * 0.2;
         double offsetZ = (this.random.nextDouble() - 0.5) * 0.2;
-        level.addParticle(ParticleTypes.FLAME, pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ,
-                Mth.nextFloat(random, -0.025f, 0.025f), Mth.nextFloat(random, -0.025f, 0.025f), Mth.nextFloat(random, -0.025f, 0.025f));
+
         level.addParticle(ParticleTypes.SMOKE, pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ,
                 Mth.nextFloat(random, -0.025f, 0.025f), Mth.nextFloat(random, -0.025f, 0.025f), Mth.nextFloat(random, -0.025f, 0.025f));
 
@@ -82,6 +91,8 @@ public class HellblazeArrowEntity extends AbstractArrow implements ItemSupplier 
             this.setNoGravity(false);
         } else {
             this.setNoGravity(true);
+            level.addParticle(ParticleTypes.FLAME, pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ,
+                    Mth.nextFloat(random, -0.025f, 0.025f), Mth.nextFloat(random, -0.025f, 0.025f), Mth.nextFloat(random, -0.025f, 0.025f));
         }
 
         if (this.inGround) {

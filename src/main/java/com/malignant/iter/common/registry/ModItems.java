@@ -54,7 +54,8 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> MAGMANUM_SWORD = ITEMS.register("magmanum_sword", MagmanumSword::new);
     public static final DeferredHolder<Item, Item> MAGMANUM_PICKAXE = ITEMS.register("magmanum_pickaxe", MagmanumPickaxe::new);
 
-    public static final DeferredHolder<Item, Item> HELLBLAZE_ARROW = ITEMS.register("hellblaze_arrow", () -> new Item(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> COPPER_CASING = ITEMS.register("copper_casing", () -> new Item(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> HELLBLAZE_ARROW = ITEMS.register("hellblaze_arrow", HellblazeArrowItem::new);
     public static final DeferredHolder<Item, Item> FLINT_ROUND = ITEMS.register("flint_round", () -> new FlintRound(new Item.Properties()));
     public static final DeferredHolder<Item, Item> IRON_ROUND = ITEMS.register("iron_round", () -> new IronRound(new Item.Properties()));
     public static final DeferredHolder<Item, Item> GOBLIN_ROUND = ITEMS.register("goblin_round", () -> new GoblinRound(new Item.Properties()));
@@ -78,6 +79,12 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> GOBLIN_WARRIOR_SPAWN_EGG =
             ITEMS.register("goblin_warrior_spawn_egg", () ->new DeferredSpawnEggItem
                     (ModEntities.GOBLIN_WARRIOR, 0x526133, 0x4B3A43, new Item.Properties()));
+    public static final DeferredHolder<Item, Item> GOBLIN_SHARPSHOOTER_SPAWN_EGG =
+            ITEMS.register("goblin_sharpshooter_spawn_egg", () ->new DeferredSpawnEggItem
+                    (ModEntities.GOBLIN_SHARPSHOOTER, 0x7e8d43, 0x4B3A43, new Item.Properties()));
+    public static final DeferredHolder<Item, Item> HOBGOBLIN_SPAWN_EGG =
+            ITEMS.register("hobgoblin_spawn_egg", () ->new DeferredSpawnEggItem
+                    (ModEntities.HOBGOBLIN, 0x44273C , 0x11727a, new Item.Properties()));
     public static final DeferredHolder<Item, Item> BEREFT_SPAWN_EGG =
             ITEMS.register("bereft_spawn_egg", () ->new DeferredSpawnEggItem
                     (ModEntities.BEREFT, 0x69252F, 0x5B2649, new Item.Properties()));
@@ -175,15 +182,18 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> IRON_RING_MAGMANUM = ITEMS.register("iron_ring_magmanum", IronRingMagmanum::new);
     public static final DeferredHolder<Item, Item> GOLDEN_RING_MAGMANUM = ITEMS.register("golden_ring_magmanum", GoldenRingMagmanum::new);
     public static final DeferredHolder<Item, Item> NETHERITE_RING_MAGMANUM = ITEMS.register("netherite_ring_magmanum", NetheriteRingMagmanum::new);
+    public static final DeferredHolder<Item, Item> IRON_RING_FLINT = ITEMS.register("iron_ring_flint", IronRingFlint::new);
+    public static final DeferredHolder<Item, Item> GOLDEN_RING_FLINT = ITEMS.register("golden_ring_flint", GoldenRingFlint::new);
+    public static final DeferredHolder<Item, Item> NETHERITE_RING_FLINT = ITEMS.register("netherite_ring_flint", NetheriteRingFlint::new);
 
-    public static final DeferredHolder<Item, Item> APPRENTICE_HOOD = ITEMS.register("apprentice_hood", ApprenticeArmor.Helmet::new);
-    public static final DeferredHolder<Item, Item> APPRENTICE_ROBES = ITEMS.register("apprentice_robes", ApprenticeArmor.Chestplate::new);
-    public static final DeferredHolder<Item, Item> APPRENTICE_PANTS = ITEMS.register("apprentice_pants", ApprenticeArmor.Leggings::new);
-    public static final DeferredHolder<Item, Item> APPRENTICE_BOOTS = ITEMS.register("apprentice_boots", ApprenticeArmor.Boots::new);
-    public static final DeferredHolder<Item, Item> AZURE_HOOD = ITEMS.register("azure_hood", AzureArmor.Helmet::new);
-    public static final DeferredHolder<Item, Item> AZURE_MANTLE = ITEMS.register("azure_mantle", AzureArmor.Chestplate::new);
-    public static final DeferredHolder<Item, Item> AZURE_PANTS = ITEMS.register("azure_pants", AzureArmor.Leggings::new);
-    public static final DeferredHolder<Item, Item> AZURE_BOOTS = ITEMS.register("azure_boots", AzureArmor.Boots::new);
+    public static final DeferredHolder<Item, Item> APPRENTICE_HOOD = ITEMS.register("apprentice_hood", () -> new ApprenticeArmor.Helmet(new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(6))));
+    public static final DeferredHolder<Item, Item> APPRENTICE_ROBES = ITEMS.register("apprentice_robes", () -> new ApprenticeArmor.Chestplate(new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(6))));
+    public static final DeferredHolder<Item, Item> APPRENTICE_PANTS = ITEMS.register("apprentice_pants", () -> new ApprenticeArmor.Leggings(new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(6))));
+    public static final DeferredHolder<Item, Item> APPRENTICE_BOOTS = ITEMS.register("apprentice_boots", () -> new ApprenticeArmor.Boots(new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(6))));
+    public static final DeferredHolder<Item, Item> AZURE_HOOD = ITEMS.register("azure_hood", () -> new AzureArmor.Helmet(new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(11))));
+    public static final DeferredHolder<Item, Item> AZURE_MANTLE = ITEMS.register("azure_mantle", () -> new AzureArmor.Chestplate(new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(11))));
+    public static final DeferredHolder<Item, Item> AZURE_PANTS = ITEMS.register("azure_pants", () -> new AzureArmor.Leggings(new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(11))));
+    public static final DeferredHolder<Item, Item> AZURE_BOOTS = ITEMS.register("azure_boots", () -> new AzureArmor.Boots(new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(11))));
 
     public static final DeferredHolder<Item, Item> SPELL_BOOK = ITEMS.register("spell_book", SpellBook::new);
 
@@ -200,12 +210,15 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SPELL_LESSER_HEAL = ITEMS.register("spell_lesser_heal", SpellLesserHeal::new);
     public static final DeferredHolder<Item, Item> SPELL_MEND = ITEMS.register("spell_mend", SpellMend::new);
     public static final DeferredHolder<Item, Item> SPELL_LEAP = ITEMS.register("spell_leap", SpellLeap::new);
+    public static final DeferredHolder<Item, Item> SPELL_HEAL = ITEMS.register("spell_heal", SpellHeal::new);
     public static final DeferredHolder<Item, Item> SPELL_RECALL = ITEMS.register("spell_recall", SpellRecall::new);
     public static final DeferredHolder<Item, Item> SPELL_ARCANE_BEAM = ITEMS.register("spell_arcane_beam", SpellArcaneBeam::new);
 
     public static final DeferredHolder<Item, Item> SPELL_GEOSENSE = ITEMS.register("spell_geosense", SpellGeosense::new);
     public static final DeferredHolder<Item, Item> SPELL_SPLASHES = ITEMS.register("spell_splashes", SpellSplashes::new);
     public static final DeferredHolder<Item, Item> SPELL_GUST = ITEMS.register("spell_gust", SpellGust::new);
+    public static final DeferredHolder<Item, Item> SPELL_FROST_CONE = ITEMS.register("spell_frost_cone", SpellFrostCone::new);
+    public static final DeferredHolder<Item, Item> SPELL_FIRE_BREATH = ITEMS.register("spell_fire_breath", SpellFireBreath::new);
     public static final DeferredHolder<Item, Item> SPELL_IGNITE = ITEMS.register("spell_ignite", SpellIgnite::new);
     public static final DeferredHolder<Item, Item> SPELL_FLAMEBOLT = ITEMS.register("spell_flamebolt", SpellFlamebolt::new);
     public static final DeferredHolder<Item, Item> SPELL_FROST_SPIKE = ITEMS.register("spell_frost_spike", SpellFrostSpike::new);
@@ -216,6 +229,9 @@ public class ModItems {
 
 
     public static final DeferredHolder<Item, Item> SPELL_WITCH_LASH = ITEMS.register("spell_witch_lash", SpellWitchLash::new);
+
+
+    public static final DeferredHolder<Item, Item> SPELL_TEST_GOBLIN_PATROL = ITEMS.register("spell_test_goblin_patrol", SpellTestGoblinPatrol::new);
 
 
     public static void register(IEventBus eventBus) {

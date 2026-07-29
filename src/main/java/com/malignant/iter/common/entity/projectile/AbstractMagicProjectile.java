@@ -1,6 +1,9 @@
 package com.malignant.iter.common.entity.projectile;
 
+import com.malignant.iter.common.registry.ModDamageTypes;
+import com.malignant.iter.common.registry.ModItems;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
@@ -8,11 +11,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractMagicProjectile extends AbstractArrow {
     private static final net.minecraft.network.syncher.EntityDataAccessor<Float> PROJECTILE_DAMAGE =
@@ -22,23 +27,43 @@ public abstract class AbstractMagicProjectile extends AbstractArrow {
     public AbstractMagicProjectile(EntityType<? extends AbstractArrow> type, Level level) {
         super(type, level);
         this.getEntityData().set(PROJECTILE_DAMAGE, 1.0f);
+        this.pickup = AbstractArrow.Pickup.DISALLOWED;
     }
 
     public AbstractMagicProjectile(EntityType<? extends AbstractArrow> type, Level level, float baseDamage) {
         super(type, level);
         this.getEntityData().set(PROJECTILE_DAMAGE, baseDamage);
+        this.pickup = AbstractArrow.Pickup.DISALLOWED;
     }
 
     public AbstractMagicProjectile(EntityType<? extends AbstractArrow> type, Level level, LivingEntity shooter, float baseDamage) {
         super(type, level);
         this.setOwner(shooter);
         this.getEntityData().set(PROJECTILE_DAMAGE, baseDamage);
+        this.pickup = AbstractArrow.Pickup.DISALLOWED;
     }
 
     @Override
     protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(PROJECTILE_DAMAGE, 1.0f);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putFloat("ProjectileDamage", getProjectileDamage());
+        compound.remove("PickupItem");
+        compound.remove("pickup");
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if (compound.contains("ProjectileDamage")) {
+            setProjectileDamage(compound.getFloat("ProjectileDamage"));
+        }
+        this.pickup = AbstractArrow.Pickup.DISALLOWED;
     }
 
     public void shootWithDamage(LivingEntity owner, float xRot, float yRot, float pitch, float velocity, float inaccuracy, float damage) {
@@ -73,7 +98,7 @@ public abstract class AbstractMagicProjectile extends AbstractArrow {
             DamageSource damageSource = new DamageSource(
                     this.level().registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.MOB_PROJECTILE),
+                            .getHolderOrThrow(ModDamageTypes.SPELL_PROJECTILE),
                     this,
                     owner
             );
@@ -104,9 +129,14 @@ public abstract class AbstractMagicProjectile extends AbstractArrow {
     }
 
     @Override
-    protected ItemStack getPickupItem() {
-        return ItemStack.EMPTY;
+    protected @NotNull ItemStack getPickupItem() {
+        return new ItemStack(ModItems.ETHERDUST.get());
     }
+
+    @Override
+    protected @NotNull ItemStack getDefaultPickupItem(){
+        return new ItemStack(ModItems.ETHERDUST.get());
+    };
 
     @Override
     public void tick() {

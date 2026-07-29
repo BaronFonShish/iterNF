@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "iter:flint_round",
+    "iter:iron_round",
+    "iter:seedshot_round"
+  ]
+}

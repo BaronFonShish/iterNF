@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "iter:recurve_bow",
-    "iter:netherite_warbow"
+    "iter:netherite_warbow",
+    "iter:stinger"
   ]
 }

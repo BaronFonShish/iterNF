@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 public class SpellBlazeBarrage extends SpellItem {
 
-    public SpellBlazeBarrage() {super(new Properties(), "primal", "force", "fire",2, 25, 5, 30);}
+    public SpellBlazeBarrage() {super(new Properties(), SpellDomain.PRIMAL, SpellMethod.FORCE, SpellAspect.FIRE,2, 25, 5, 30);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -33,5 +33,9 @@ public class SpellBlazeBarrage extends SpellItem {
                     SoundEvents.FIRECHARGE_USE,
                     SoundSource.PLAYERS, 0.75f, 1f);
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
     }
 }

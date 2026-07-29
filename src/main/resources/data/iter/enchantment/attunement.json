@@ -18,6 +18,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#iter:spell_focus",
+  "supported_items": "#iter:enchantable/staff",
   "weight": 5
 }

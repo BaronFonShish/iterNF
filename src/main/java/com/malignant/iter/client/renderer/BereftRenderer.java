@@ -40,5 +40,4 @@ public class BereftRenderer extends MobRenderer<BereftEntity, BereftModel<Bereft
         poseStack.popPose();
     }
 
-
 }

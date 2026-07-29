@@ -26,7 +26,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "name": "iter:gameplay/spelldrop_up_to_expert",
+          "value": "iter:gameplay/spelldrop_up_to_expert",
           "weight": 8
         },
         {
@@ -68,16 +68,6 @@
                 "min": 1,
                 "max": 4
               }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:enchanted_book",
-          "weight": 6,
-          "functions": [
-            {
-              "function": "minecraft:enchant_randomly"
             }
           ]
         }

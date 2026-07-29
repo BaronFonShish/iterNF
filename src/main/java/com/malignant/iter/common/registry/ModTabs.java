@@ -32,12 +32,15 @@ public class ModTabs {
                         tabData.accept(ModItems.SPELL_LESSER_HEAL.get());
                         tabData.accept(ModItems.SPELL_MEND.get());
                         tabData.accept(ModItems.SPELL_LEAP.get());
+                        tabData.accept(ModItems.SPELL_HEAL.get());
                         tabData.accept(ModItems.SPELL_RECALL.get());
                         tabData.accept(ModItems.SPELL_ARCANE_BEAM.get());
 
                         tabData.accept(ModItems.SPELL_GEOSENSE.get());
                         tabData.accept(ModItems.SPELL_IGNITE.get());
+                        tabData.accept(ModItems.SPELL_FIRE_BREATH.get());
                         tabData.accept(ModItems.SPELL_SPLASHES.get());
+                        tabData.accept(ModItems.SPELL_FROST_CONE.get());
                         tabData.accept(ModItems.SPELL_GUST.get());
                         tabData.accept(ModItems.SPELL_FLAMEBOLT.get());
                         tabData.accept(ModItems.SPELL_FROST_SPIKE.get());
@@ -45,7 +48,6 @@ public class ModTabs {
                         tabData.accept(ModItems.SPELL_BLAZE_BARRAGE.get());
                         tabData.accept(ModItems.SPELL_FIREBALL.get());
                         tabData.accept(ModItems.SPELL_LEGACY_FIREBALL.get());
-
 
                         tabData.accept(ModItems.SPELL_WITCH_LASH.get());
                     })

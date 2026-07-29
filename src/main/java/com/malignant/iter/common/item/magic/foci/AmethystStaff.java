@@ -11,12 +11,9 @@ public class AmethystStaff extends SpellFocus {
                 .rarity(Rarity.COMMON)
                 .enchantability(15),
                 2,
-                3.5f,
+                4f,
                 0.05f,
-                0.025f,
-                0,
-                0,
-                0
+                0.025f
         );
     }
 }

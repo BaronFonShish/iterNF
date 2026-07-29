@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "iter:etherdust"
+    },
+    {
+      "item": "iter:gist"
+    },
+    {
+      "item": "iter:ink_bottle"
+    },
+    {
+      "item": "minecraft:paper"
+    }
+  ],
+  "result": {
+    "id": "iter:spell_etherbolt",
+    "count": 1
+  }
+}

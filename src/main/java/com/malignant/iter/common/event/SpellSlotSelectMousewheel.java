@@ -57,6 +57,9 @@ public class SpellSlotSelectMousewheel {
         }
         iterPlayerData.setSelectedSpellSlot(newSlot);
         IterPlayerDataUtils.syncSpellSlot(player, newSlot);
+        if (player.isUsingItem()){
+            player.stopUsingItem();
+        }
         player.playSound(SoundEvents.UI_BUTTON_CLICK.value(), 0.2f, 1.0f);
     }
 

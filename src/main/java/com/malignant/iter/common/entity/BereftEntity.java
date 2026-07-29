@@ -3,6 +3,7 @@ package com.malignant.iter.common.entity;
 import com.malignant.iter.common.registry.ModItems;
 import com.malignant.iter.common.registry.ModSounds;
 import com.malignant.iter.common.registry.ModSpawnRestrictions;
+import com.malignant.iter.common.registry.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvent;
@@ -38,7 +39,7 @@ public class BereftEntity extends Monster implements RangedAttackMob {
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.2f)
-                .add(Attributes.MAX_HEALTH, 30)
+                .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.ARMOR, 0)
                 .add(Attributes.ATTACK_DAMAGE, 4)
                 .add(Attributes.FOLLOW_RANGE, 32);
@@ -71,8 +72,11 @@ public class BereftEntity extends Monster implements RangedAttackMob {
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this) {
             @Override
             public boolean canUse() {
-                if (this.mob.getLastHurtByMob() instanceof BereftEntity) {
-                    return false;
+                LivingEntity attacker = this.mob.getLastAttacker();
+                if (attacker != null) {
+                    if (attacker instanceof BereftEntity) {
+                        return false;
+                    }
                 }
                 return super.canUse();
             }

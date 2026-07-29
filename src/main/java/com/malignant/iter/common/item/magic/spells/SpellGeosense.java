@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class SpellGeosense extends SpellItem {
 
-    public SpellGeosense() {super(new Properties(), "primal", "conveyance", "earth",1, 20, 4, 25);}
+    public SpellGeosense() {super(new Properties(), SpellDomain.PRIMAL, SpellMethod.CONVEYANCE, SpellAspect.EARTH,1, 20, 4, 25);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -60,6 +60,11 @@ public class SpellGeosense extends SpellItem {
                 dist = dist + 0.5f;
             }
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 
     public boolean findBlock(BlockState blockfortest, Block target){

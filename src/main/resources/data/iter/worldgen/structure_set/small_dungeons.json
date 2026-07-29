@@ -3,13 +3,17 @@
     {
       "structure": "iter:simple_monster_room",
       "weight": 1
+    },
+    {
+      "structure": "iter:small_generic_dungeon",
+      "weight": 1
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
     "salt": 451238415,
     "spacing": 20,
-    "separation": 12,
+    "separation": 14,
     "spread_type": "linear"
   }
 }

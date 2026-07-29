@@ -11,7 +11,7 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "iter:gameplay/spelldrop_expert_elemental",
+          "value": "iter:gameplay/spelldrop_expert_primal",
           "weight": 12
         }
       ]

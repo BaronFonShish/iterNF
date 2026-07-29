@@ -20,7 +20,7 @@ import net.minecraft.world.level.Level;
 public class SpellRecall extends SpellItem {
 
     public SpellRecall() {
-        super(new Properties(), "arcane", "conveyance", "ether",3, 100, 100, (int) (3600));
+        super(new Properties(), SpellDomain.ARCANE, SpellMethod.CONVEYANCE, SpellAspect.ETHER,3, 100, 100, (int) (3600));
     }
 
     @Override
@@ -97,5 +97,10 @@ public class SpellRecall extends SpellItem {
                 }
             }
         }
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

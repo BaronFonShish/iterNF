@@ -14,10 +14,10 @@
     "base": 20,
     "per_level_above_first": 5
   },
-  "primary_items": "#minecraft:bows",
+  "primary_items": "#minecraft:enchantable/bow",
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:bows",
+  "supported_items": "#minecraft:enchantable/bow",
   "weight": 2
 }

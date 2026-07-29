@@ -12,7 +12,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class SpellFrostSpike extends SpellItem {
 
-    public SpellFrostSpike() {super(new Properties(), "primal", "force", "frost",2, 15, 4, 27);}
+    public SpellFrostSpike() {super(new Properties(), SpellDomain.PRIMAL, SpellMethod.FORCE, SpellAspect.FROST,2, 15, 4, 27);}
 
     @Override
     public void castSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower) {
@@ -35,5 +35,10 @@ public class SpellFrostSpike extends SpellItem {
                 ModSounds.CAST_ARCANE.get(), SoundSource.PLAYERS, 0.8F, 1.0F);
 
         level.addFreshEntity(frostSpike);
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
+
     }
 }

@@ -98,7 +98,8 @@ public class ModCreativeTabEvents {
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(Items.CROSSBOW), new ItemStack(ModItems.STINGER.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.STINGER.get()), new ItemStack(ModItems.GOBSTEEL_RIFLE.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOBSTEEL_RIFLE.get()), new ItemStack(ModItems.DWARVEN_REVOLVER.get())),
-                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.DWARVEN_REVOLVER.get()), new ItemStack(ModItems.FLINT_ROUND.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.DWARVEN_REVOLVER.get()), new ItemStack(ModItems.COPPER_CASING.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.COPPER_CASING.get()), new ItemStack(ModItems.FLINT_ROUND.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.FLINT_ROUND.get()), new ItemStack(ModItems.GOBLIN_ROUND.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOBLIN_ROUND.get()), new ItemStack(ModItems.IRON_ROUND.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.IRON_ROUND.get()), new ItemStack(ModItems.SEEDSHOT_ROUND.get())),
@@ -136,6 +137,9 @@ public class ModCreativeTabEvents {
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.NETHERITE_RING_SANGUARNET.get()), new ItemStack(ModItems.IRON_RING_MAGMANUM.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.IRON_RING_MAGMANUM.get()), new ItemStack(ModItems.GOLDEN_RING_MAGMANUM.get())),
                 new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOLDEN_RING_MAGMANUM.get()), new ItemStack(ModItems.NETHERITE_RING_MAGMANUM.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.NETHERITE_RING_MAGMANUM.get()), new ItemStack(ModItems.IRON_RING_FLINT.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.IRON_RING_FLINT.get()), new ItemStack(ModItems.GOLDEN_RING_FLINT.get())),
+                new TabInsertion(CreativeModeTabs.COMBAT, new ItemStack(ModItems.GOLDEN_RING_FLINT.get()), new ItemStack(ModItems.NETHERITE_RING_FLINT.get())),
 
                 new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(Items.NETHERITE_HOE), new ItemStack(ModItems.GOBSTEEL_SHOVEL.get())),
                 new TabInsertion(CreativeModeTabs.TOOLS_AND_UTILITIES, new ItemStack(ModItems.GOBSTEEL_SHOVEL.get()), new ItemStack(ModItems.GOBSTEEL_PICKAXE.get())),
@@ -149,7 +153,9 @@ public class ModCreativeTabEvents {
                 new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.GHOUL_SPAWN_EGG.get()), new ItemStack(ModItems.DARK_SORCERER_SPAWN_EGG.get())),
                 new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.DARK_SORCERER_SPAWN_EGG.get()), new ItemStack(ModItems.BEREFT_SPAWN_EGG.get())),
                 new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.BEREFT_SPAWN_EGG.get()), new ItemStack(ModItems.GOBLIN_SPAWN_EGG.get())),
-                new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.GOBLIN_SPAWN_EGG.get()), new ItemStack(ModItems.GOBLIN_WARRIOR_SPAWN_EGG.get()))
+                new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.GOBLIN_SPAWN_EGG.get()), new ItemStack(ModItems.GOBLIN_WARRIOR_SPAWN_EGG.get())),
+                new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.GOBLIN_WARRIOR_SPAWN_EGG.get()), new ItemStack(ModItems.GOBLIN_SHARPSHOOTER_SPAWN_EGG.get())),
+                new TabInsertion(CreativeModeTabs.SPAWN_EGGS, new ItemStack(ModItems.GOBLIN_SHARPSHOOTER_SPAWN_EGG.get()), new ItemStack(ModItems.HOBGOBLIN_SPAWN_EGG.get()))
         );
 
 

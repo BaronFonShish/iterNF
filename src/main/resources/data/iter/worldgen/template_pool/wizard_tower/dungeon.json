@@ -1,0 +1,51 @@
+{
+  "name": "iter:wizard_tower/tower",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/entrance1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/entrance2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/entrance3",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/entrance4",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/entrance5",
+        "processors": "iter:wizard_lab_processor"
+      }
+    }
+  ]
+}

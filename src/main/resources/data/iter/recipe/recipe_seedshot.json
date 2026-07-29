@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "item": "iter:copper_casing"
+    },
+    {
+      "tag": "iter:propellant"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    }
+  ],
+  "result": {
+    "id": "iter:seedshot_round",
+    "count": 4
+  }
+}

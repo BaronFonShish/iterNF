@@ -64,6 +64,7 @@ public class IterPlayerDataUtils {
         return flightTimeAttr != null && flightTimeAttr.getValue() > 0;
     }
 
+
     public static float getDynamicDissipation(Player player){
         AttributeInstance dissipationBase = player.getAttribute(ModAttributes.ETHER_BURNOUT_DISSIPATION);
         float dissipation = dissipationBase != null ? (float) dissipationBase.getValue() : 0.02f;
@@ -87,6 +88,7 @@ public class IterPlayerDataUtils {
             syncBurnout(player, burnout);
         }
     }
+
 
     public static void addBurnout(Player player, float amount) {
         IterPlayerData data = getPlayerData(player);
@@ -227,8 +229,24 @@ public class IterPlayerDataUtils {
         }
     }
 
+    //spell item
+    public static void syncCurrentSpellToClient(ServerPlayer player, ItemStack spellStack) {
+        player.connection.send(new CurrentSpellPayload(spellStack));
+    }
+
+    public static void syncCurrentSpellToServer(ItemStack spellStack) {
+        PacketDistributor.sendToServer(new CurrentSpellPayload(spellStack));
+    }
+
+    public static void syncCurrentSpell(Player player, ItemStack spellStack) {
+        if (player.level().isClientSide) {
+            syncCurrentSpellToServer(spellStack);
+        } else if (player instanceof ServerPlayer serverPlayer) {
+            syncCurrentSpellToClient(serverPlayer, spellStack);
+        }
+    }
+
     // spellweaver switch
-    // spellweaver switch - Use separate sync payload
     public static void syncSpellweaverSwitchToClient(ServerPlayer player, boolean state) {
         player.connection.send(new SpellweaverSwitchSyncPayload(state));
     }

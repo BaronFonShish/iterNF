@@ -1,5 +1,7 @@
 package com.malignant.iter.mixin;
 
+import com.malignant.iter.client.model.GoblinSharpshooterModel;
+import com.malignant.iter.common.entity.GoblinSharpshooterEntity;
 import com.malignant.iter.common.item.firearms.guns.AbstractGun;
 import com.malignant.iter.common.item.magic.defaults.SpellFocus;
 import net.minecraft.client.model.EntityModel;

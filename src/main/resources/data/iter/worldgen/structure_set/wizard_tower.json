@@ -1,15 +1,15 @@
 {
   "structures": [
     {
-      "structure": "iter:small_generic_dungeon",
+      "structure": "iter:wizard_tower",
       "weight": 1
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "salt": 329642571,
-    "spacing": 24,
-    "separation": 16,
+    "salt": 41267689,
+    "spacing": 50,
+    "separation": 30,
     "spread_type": "linear"
   }
 }

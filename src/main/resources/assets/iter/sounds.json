@@ -13,14 +13,14 @@
     ]
   },
   "cast_arcane": {
-    "subtitles": "subtitles.iter.cast_arcane",
+    "subtitles": "subtitles.iter.cast",
     "sounds": [
       "iter:misc/cast_arcane_1",
       "iter:misc/cast_arcane_2"
     ]
   },
   "cast_occult": {
-    "subtitles": "subtitles.iter.cast_occult",
+    "subtitles": "subtitles.iter.cast",
     "sounds": [
       "iter:misc/cast_occult_1",
       "iter:misc/cast_occult_2"

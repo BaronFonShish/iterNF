@@ -1,7 +1,7 @@
 /.gradle/
 /build/
 /build/classes/java/main/
-run/
+/run/
 logs/
 crash-reports/
 debug/

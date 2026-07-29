@@ -1,5 +1,6 @@
 package com.malignant.iter.common.variables;
 
+import com.malignant.iter.common.item.magic.defaults.SpellBook;
 import com.malignant.iter.common.registry.ModItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

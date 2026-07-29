@@ -1,5 +1,6 @@
 package com.malignant.iter.client.model;
 
+import com.malignant.iter.IterMod;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -12,7 +13,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
 public class HobGoblinModel<T extends Entity> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("itermod", "hobgoblin"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(IterMod.MOD_ID, "hobgoblin"), "main");
     private final ModelPart head;
     private final ModelPart body;
     private final ModelPart leftArm;

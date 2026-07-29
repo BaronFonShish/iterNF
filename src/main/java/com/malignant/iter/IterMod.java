@@ -6,11 +6,15 @@ import com.malignant.iter.client.renderer.*;
 import com.malignant.iter.common.IterModConfig;
 import com.malignant.iter.common.entity.*;
 import com.malignant.iter.common.entity.projectile.FlintBullet;
+import com.malignant.iter.common.event.GoblinPatrolEvent;
+import com.malignant.iter.common.item.armor.ModArmorMaterials;
 import com.malignant.iter.common.payload.*;
 import com.malignant.iter.common.registry.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -25,15 +29,21 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import org.slf4j.Logger;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Mod(IterMod.MOD_ID)
 public class IterMod {
     public static final String MOD_ID = "iter";
     public static final ResourceLocation PICTOGRAM_FONT = ResourceLocation.parse(MOD_ID + ":font/iter_pictograms.json");
     private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Map<ServerLevel, GoblinPatrolEvent> WORLD_SPAWNERS = new HashMap<>();
 
     public static RegistryAccess registryAccess;
 
@@ -41,12 +51,14 @@ public class IterMod {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerScreens);
 
+        ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.REGISTRY.register(modEventBus);
         ModDataComponents.DATA_COMPONENTS.register(modEventBus);
         ModEntities.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModEffects.EFFECTS.register(modEventBus);
         ModTabs.REGISTRY.register(modEventBus);
         ModFeatures.REGISTRY.register(modEventBus);
         ModProcessors.PROCESSORS.register(modEventBus);
@@ -81,8 +93,6 @@ public class IterMod {
     public void onServerStarting(ServerStartingEvent event) {
     }
 
-
-
     @EventBusSubscriber(modid = MOD_ID)
     public static class ModEventSubscriber {
 
@@ -95,6 +105,7 @@ public class IterMod {
             event.put(ModEntities.BEREFT.get(), BereftEntity.createAttributes().build());
             event.put(ModEntities.GOBLIN_WARRIOR.get(), GoblinWarriorEntity.createAttributes().build());
             event.put(ModEntities.GOBLIN.get(), GoblinEntity.createAttributes().build());
+            event.put(ModEntities.GOBLIN_SHARPSHOOTER.get(), GoblinSharpshooterEntity.createAttributes().build());
             event.put(ModEntities.HOBGOBLIN.get(), HobGoblinEntity.createAttributes().build());
         }
 
@@ -102,6 +113,7 @@ public class IterMod {
         public static void onRegisterSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         }
     }
+
 
     @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents {
@@ -122,6 +134,7 @@ public class IterMod {
             event.registerEntityRenderer(ModEntities.GIANT_SPIDER.get(), GiantSpiderRenderer::new);
             event.registerEntityRenderer(ModEntities.GOBLIN_WARRIOR.get(), GoblinWarriorRenderer::new);
             event.registerEntityRenderer(ModEntities.GOBLIN.get(), GoblinRenderer::new);
+            event.registerEntityRenderer(ModEntities.GOBLIN_SHARPSHOOTER.get(), GoblinSharpshooterRenderer::new);
             event.registerEntityRenderer(ModEntities.HOBGOBLIN.get(), HobGoblinRenderer::new);
             event.registerEntityRenderer(ModEntities.GHOUL.get(), GhoulRenderer::new);
             event.registerEntityRenderer(ModEntities.DARK_SORCERER.get(), DarkSorcererRenderer::new);

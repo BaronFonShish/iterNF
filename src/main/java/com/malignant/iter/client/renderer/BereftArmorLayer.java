@@ -83,15 +83,14 @@ public class BereftArmorLayer extends RenderLayer<BereftEntity, BereftModel<Bere
                         float b = (color & 0xFF) / 255.0F;
 
                         vertexConsumer = buffer.getBuffer(RenderType.armorCutoutNoCull(texture));
-                        model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY
-                        );
+                        model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY,
+                                0xFF000000 | ((int)(r * 255) << 16) | ((int)(g * 255) << 8) | (int)(b * 255));
                     } else {
                         vertexConsumer = ItemRenderer.getArmorFoilBuffer(
                                 buffer, RenderType.armorCutoutNoCull(texture),
                                 false
                         );
-                        model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY
-                        );
+                        model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY);
                     }
 
                     if (slot == EquipmentSlot.HEAD) {

@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 public class SpellLesserHeal extends SpellItem {
 
     public SpellLesserHeal() {
-        super(new Properties(), "arcane","body","life",1,40, 10, 100);
+        super(new Properties(), SpellDomain.ARCANE, SpellMethod.BODY, SpellAspect.LIFE,1,40, 10, 100);
     }
 
     @Override
@@ -26,6 +26,10 @@ public class SpellLesserHeal extends SpellItem {
 
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1.0F, 1.0F);
+    }
+
+    @Override
+    public void castContinousSpell(Level level, Player player, ItemStack wand, ItemStack spellStack, float spellpower, int ticks) {
     }
 
 }

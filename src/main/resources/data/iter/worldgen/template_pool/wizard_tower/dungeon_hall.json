@@ -1,0 +1,177 @@
+{
+  "name": "iter:wizard_tower/tower",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/main_hall_generic1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/main_hall_generic2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/main_hall_generic3",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/main_hall_generic4",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/main_hall_generic5",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room3",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room4",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room5",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room6",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room7",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/misc_room8",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/loot_room1",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/loot_room2",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/loot_room3",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/loot_room4",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/loot_room5",
+        "processors": "iter:wizard_lab_processor"
+      }
+    },
+    {
+      "weight": 10,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "iter:wizard_tower/loot_room6",
+        "processors": "iter:wizard_lab_processor"
+      }
+    }
+  ]
+}

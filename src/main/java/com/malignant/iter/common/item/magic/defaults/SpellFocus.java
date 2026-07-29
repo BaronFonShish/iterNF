@@ -27,19 +27,13 @@ public abstract class SpellFocus extends Item {
     private final float spellpower;
     private final float etherCost;
     private final int tier;
-    private final float arcaneMod;
-    private final float occultMod;
-    private final float primalMod;
 
-    public SpellFocus(SpellFocusProperties properties, int tier, float spellpower, float castingSpeed, float etherCost, float arcaneMod, float occultMod, float primalMod) {
+    public SpellFocus(SpellFocusProperties properties, int tier, float spellpower, float castingSpeed, float etherCost) {
         super(properties.toItemProperties());
         this.spellpower = spellpower;
         this.castingSpeed = castingSpeed;
         this.etherCost = etherCost;
         this.tier = tier;
-        this.arcaneMod = arcaneMod;
-        this.occultMod = occultMod;
-        this.primalMod = primalMod;
     }
 
     public static class SpellFocusProperties {
@@ -125,18 +119,6 @@ public abstract class SpellFocus extends Item {
                 new AttributeModifier(ResourceLocation.parse("iter:ether_efficiency_focus"), (this.etherCost + 0.5) - 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                 EquipmentSlotGroup.MAINHAND);
 
-        builder.add(ModAttributes.ARCANE_POWER,
-                new AttributeModifier(ResourceLocation.parse("iter:arcane_power_focus"), this.arcaneMod, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                EquipmentSlotGroup.MAINHAND);
-
-        builder.add(ModAttributes.OCCULT_POWER,
-                new AttributeModifier(ResourceLocation.parse("iter:occult_power_focus"), this.occultMod, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                EquipmentSlotGroup.MAINHAND);
-
-        builder.add(ModAttributes.PRIMAL_POWER,
-                new AttributeModifier(ResourceLocation.parse("iter:primal_power_focus"), this.primalMod, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                EquipmentSlotGroup.MAINHAND);
-
         return builder.build();
     }
 
@@ -184,8 +166,9 @@ public abstract class SpellFocus extends Item {
             return InteractionResultHolder.fail(stack);
         }
 
-        if (spellstack.getItem() instanceof SpellItem spell) {
+        if ((spellstack.getItem() instanceof SpellItem spell)&&!(spellstack.getItem() instanceof ContinousSpellItem)) {
             float castTime = spell.getCastTime(player, spellstack);
+            IterPlayerDataUtils.syncCurrentSpell(player, spellstack);
 
 
             if (castTime <= 1) {
@@ -204,6 +187,12 @@ public abstract class SpellFocus extends Item {
             }
         }
 
+        if (spellstack.getItem() instanceof ContinousSpellItem) {
+            IterPlayerDataUtils.syncCurrentSpell(player, spellstack);
+            player.startUsingItem(hand);
+            return InteractionResultHolder.consume(stack);
+        }
+
         return InteractionResultHolder.fail(stack);
     }
 
@@ -212,28 +201,38 @@ public abstract class SpellFocus extends Item {
         if (entity instanceof Player player) {
             ItemStack spellstack = SpellBookUtils.getSpell(player);
 
-            if (spellstack.isEmpty() || !(spellstack.getItem() instanceof SpellItem)) {
+            if (spellstack.isEmpty()) {
                 entity.stopUsingItem();
                 return;
             }
 
-            if (player.getCooldowns().isOnCooldown(spellstack.getItem())) {
-                entity.stopUsingItem();
-                return;
-            }
+            if ((spellstack.getItem() instanceof SpellItem) && !(spellstack.getItem() instanceof ContinousSpellItem)) {
 
-            if (spellstack.getItem() instanceof SpellItem spell) {
-                int useTime = this.getUseDuration(stack, entity) - remainingTicks;
-                float castTime = spell.getCastTime(player, spellstack);
-
-                if ((!level.isClientSide()) && (useTime >= castTime)) {
-                    float ether = spell.getManaCost(player, spellstack);
-                    float cooldown = spell.getCooldown(player, spellstack);
-                    float spellpower = spell.getSpellPower(player, spellstack);
-
-                    this.completeCast(player, (int) cooldown, spellpower, ether, spell, stack, spellstack);
+                if (player.getCooldowns().isOnCooldown(spellstack.getItem())) {
                     entity.stopUsingItem();
+                    return;
                 }
+
+                if (spellstack.getItem() instanceof SpellItem spell) {
+                    int useTime = this.getUseDuration(stack, entity) - remainingTicks;
+                    float castTime = spell.getCastTime(player, spellstack);
+
+                    if ((!level.isClientSide()) && (useTime >= castTime)) {
+                        float ether = spell.getManaCost(player, spellstack);
+                        float cooldown = spell.getCooldown(player, spellstack);
+                        float spellpower = spell.getSpellPower(player, spellstack);
+
+                        this.completeCast(player, (int) cooldown, spellpower, ether, spell, stack, spellstack);
+                        entity.stopUsingItem();
+                    }
+                }
+            }
+
+            if (spellstack.getItem() instanceof ContinousSpellItem holdspell) {
+                int ticksUsed = 72000 - remainingTicks;
+
+                float spellpower = holdspell.getSpellPower(player, spellstack);
+                holdspell.spellTick(level, player, stack, spellstack, spellpower, ticksUsed);
             }
         }
     }

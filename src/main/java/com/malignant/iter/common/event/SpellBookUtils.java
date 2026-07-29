@@ -1,5 +1,6 @@
 package com.malignant.iter.common.event;
 
+import com.malignant.iter.common.item.magic.defaults.ContinousSpellItem;
 import com.malignant.iter.common.item.magic.defaults.SpellBook;
 import com.malignant.iter.common.item.magic.defaults.SpellItem;
 import com.malignant.iter.common.variables.IterPlayerDataUtils;
@@ -54,7 +55,7 @@ public class SpellBookUtils {
     }
 
     public static boolean isSpellItem(ItemStack stack) {
-        return !stack.isEmpty() && (stack.getItem() instanceof SpellItem);
+        return !stack.isEmpty() && (stack.getItem() instanceof SpellItem) || (stack.getItem() instanceof ContinousSpellItem);
     }
 
     @Nullable
