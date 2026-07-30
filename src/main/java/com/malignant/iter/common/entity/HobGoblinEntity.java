@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class    HobGoblinEntity extends Monster {
+public class HobGoblinEntity extends Monster {
 
     public HobGoblinEntity(EntityType<HobGoblinEntity> type, Level world) {
         super(type, world);

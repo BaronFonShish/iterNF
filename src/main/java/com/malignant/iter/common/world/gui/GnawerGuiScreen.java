@@ -1,6 +1,9 @@
 package com.malignant.iter.common.world.gui;
 
 import com.malignant.iter.common.payload.GnawerButtonPayload;
+import com.malignant.iter.common.payload.VoidMawButtonPayload;
+import com.malignant.iter.common.registry.ModAtlas;
+import com.malignant.iter.common.world.gui.widget.TextureButton;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.WidgetSprites;
@@ -20,15 +23,9 @@ public class GnawerGuiScreen extends AbstractContainerScreen<GnawerGuiMenu> {
     private final Level world;
     private final int x, y, z;
     private final Player entity;
-    private ImageButton button_book;
+    private TextureButton button_book;
 
     private static final ResourceLocation TEXTURE = ResourceLocation.parse("iter:textures/gui/gnawer_gui.png");
-
-    WidgetSprites buttonSprites = new WidgetSprites(
-            ResourceLocation.parse("iter:textures/gui/atlas/gnawer_book"),
-            ResourceLocation.parse("iter:textures/gui/atlas/gnawer_book_hovered")
-    );
-
 
     public GnawerGuiScreen(GnawerGuiMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
@@ -43,7 +40,6 @@ public class GnawerGuiScreen extends AbstractContainerScreen<GnawerGuiMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
@@ -76,11 +72,12 @@ public class GnawerGuiScreen extends AbstractContainerScreen<GnawerGuiMenu> {
     public void init() {
         super.init();
 
-        button_book = new ImageButton(
+        button_book = new TextureButton(
                 this.leftPos + 71, this.topPos + 64, 32, 16,
-                buttonSprites,
+                ModAtlas.GNAWER_BOOK,
+                ModAtlas.GNAWER_BOOK_HOVER,
                 button -> {
-                    PacketDistributor.sendToServer(new GnawerButtonPayload(new BlockPos(x, y, z)));
+                    PacketDistributor.sendToServer(new VoidMawButtonPayload(new BlockPos(x, y, z)));
                 }
         );
 

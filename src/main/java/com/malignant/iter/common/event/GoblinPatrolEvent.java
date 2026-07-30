@@ -59,6 +59,7 @@ public class GoblinPatrolEvent implements CustomSpawner {
         } else {
             data.setgoblinPatrolNextTick((long) (gameTime + (0.5 + Math.random()) * 24000));
         }
+        System.out.println("Next tick: " + data.getgoblinPatrolNextTick() + " = " + ((data.getgoblinPatrolNextTick()-gameTime)/24000) + " days.");
         return 0;
     }
 
@@ -80,7 +81,6 @@ public class GoblinPatrolEvent implements CustomSpawner {
     }
 
     private static void spawnPatrol(ServerLevel level, BlockPos center, Player player) {
-
         float severity = PlayerSeverityMultiplier.compute((ServerPlayer) player);
         Set<Mob> goblins = new HashSet<>();
         goblins.add(new GoblinEntity(ModEntities.GOBLIN.get(), level));

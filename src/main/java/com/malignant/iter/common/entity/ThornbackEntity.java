@@ -1,6 +1,5 @@
 package com.malignant.iter.common.entity;
 
-import com.malignant.iter.common.event.SpiderEggHatchEvent;
 import com.malignant.iter.common.registry.ModSpawnRestrictions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -11,11 +10,12 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -25,20 +25,25 @@ import net.minecraft.world.phys.AABB;
 import javax.annotation.Nullable;
 import java.util.Set;
 
-public class ThornbackEntity extends Spider {
+public class ThornbackEntity extends Monster {
 
-    public ThornbackEntity(EntityType<? extends Spider> type, Level world) {
+    private static final double ATTACK_REACH = 1.5;
+
+    public ThornbackEntity(EntityType<ThornbackEntity> type, Level world) {
         super(type, world);
+        this.xpReward = 7;
+        this.moveControl = createMoveControl();
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 60.0)
                 .add(Attributes.ATTACK_DAMAGE, 8.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(Attributes.MOVEMENT_SPEED, 0.3)
                 .add(Attributes.FOLLOW_RANGE, 32)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
-                .add(Attributes.ATTACK_KNOCKBACK, 1);
+                .add(Attributes.ATTACK_KNOCKBACK, 1)
+                .add(Attributes.STEP_HEIGHT, 1);
     }
     @Override
     @Nullable
@@ -49,11 +54,7 @@ public class ThornbackEntity extends Spider {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.15, true){
-            protected double getAttackReachSqr(LivingEntity entity) {
-                return 2.0;
-            }
-        });
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.15, true));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.8));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -69,6 +70,21 @@ public class ThornbackEntity extends Spider {
     @Override
     public void die(DamageSource source) {
         super.die(source);
+    }
+
+    protected MoveControl createMoveControl() {
+        return new MoveControl(this) {
+            @Override
+            protected float rotlerp(float currentYaw, float targetYaw, float maxDelta) {
+                double dx = this.wantedX - this.mob.getX();
+                double dz = this.wantedZ - this.mob.getZ();
+                if (dx * dx + dz * dz < 0.6) {
+                    return currentYaw;
+                }
+                float slowFactor = 0.12f;
+                return super.rotlerp(currentYaw, targetYaw, maxDelta * slowFactor);
+            }
+        };
     }
 
     public static boolean ThornbackSpawnRules(
@@ -96,10 +112,8 @@ public class ThornbackEntity extends Spider {
             return false;
         }
 
-        boolean cave = false;
         boolean rightbiome = false;
 
-        if (pos.getY() <= 32) {cave = true;}
 
         Biome biome = level.getBiome(pos).value();
         ResourceLocation biomeId = level.getLevel().registryAccess().registryOrThrow(Registries.BIOME)
@@ -116,10 +130,16 @@ public class ThornbackEntity extends Spider {
             rightbiome = true;
         }
 
-        if (!(cave || rightbiome)){
+        if (!(rightbiome)){
             return false;
         }
 
         return true;
+    }
+
+    @Override
+    protected AABB getAttackBoundingBox() {
+        AABB aabb = this.getBoundingBox();
+        return aabb.inflate(ATTACK_REACH, 0.0, ATTACK_REACH);
     }
 }

@@ -1,6 +1,8 @@
 package com.malignant.iter.common.world.gui;
 
 import com.malignant.iter.common.payload.VoidMawButtonPayload;
+import com.malignant.iter.common.registry.ModAtlas;
+import com.malignant.iter.common.world.gui.widget.TextureButton;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.WidgetSprites;
@@ -22,14 +24,9 @@ public class VoidMawGuiScreen extends AbstractContainerScreen<VoidMawGuiMenu> {
     private final Level world;
     private final int x, y, z;
     private final Player entity;
-    private ImageButton button_cleanse;
+    private TextureButton button_cleanse;
 
     private static final ResourceLocation TEXTURE = ResourceLocation.parse("iter:textures/gui/void_maw_gui.png");
-
-    WidgetSprites buttonSprites = new WidgetSprites(
-            ResourceLocation.parse("iter:textures/gui/atlas/void_maw_button.png"),
-            ResourceLocation.parse("iter:textures/gui/atlas/void_maw_button_hovered.png")
-    );
 
     public VoidMawGuiScreen(VoidMawGuiMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
@@ -44,11 +41,9 @@ public class VoidMawGuiScreen extends AbstractContainerScreen<VoidMawGuiMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        // Tooltip area (info icon)
         int areaX = this.leftPos + 153;
         int areaY = this.topPos + 9;
         int areaWidth = 14;
@@ -84,9 +79,10 @@ public class VoidMawGuiScreen extends AbstractContainerScreen<VoidMawGuiMenu> {
     public void init() {
         super.init();
 
-        button_cleanse = new ImageButton(
+        button_cleanse = new TextureButton(
                 this.leftPos + 71, this.topPos + 64, 32, 16,
-                buttonSprites,
+                ModAtlas.GNAWER_BOOK,
+                ModAtlas.GNAWER_BOOK_HOVER,
                 button -> {
                     PacketDistributor.sendToServer(new VoidMawButtonPayload(new BlockPos(x, y, z)));
                 }

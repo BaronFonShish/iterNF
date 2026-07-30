@@ -107,6 +107,7 @@ public class IterMod {
             event.put(ModEntities.GOBLIN.get(), GoblinEntity.createAttributes().build());
             event.put(ModEntities.GOBLIN_SHARPSHOOTER.get(), GoblinSharpshooterEntity.createAttributes().build());
             event.put(ModEntities.HOBGOBLIN.get(), HobGoblinEntity.createAttributes().build());
+            event.put(ModEntities.THORNBACK.get(), ThornbackEntity.createAttributes().build());
         }
 
         @SubscribeEvent
@@ -132,6 +133,7 @@ public class IterMod {
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.SPIDERLING.get(), SpiderlingRenderer::new);
             event.registerEntityRenderer(ModEntities.GIANT_SPIDER.get(), GiantSpiderRenderer::new);
+            event.registerEntityRenderer(ModEntities.THORNBACK.get(), ThornbackRenderer::new);
             event.registerEntityRenderer(ModEntities.GOBLIN_WARRIOR.get(), GoblinWarriorRenderer::new);
             event.registerEntityRenderer(ModEntities.GOBLIN.get(), GoblinRenderer::new);
             event.registerEntityRenderer(ModEntities.GOBLIN_SHARPSHOOTER.get(), GoblinSharpshooterRenderer::new);

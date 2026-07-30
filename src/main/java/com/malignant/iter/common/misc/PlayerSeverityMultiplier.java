@@ -96,7 +96,7 @@ public class PlayerSeverityMultiplier {
         if (hasAdvancement(player, ELYTRA)){
             severity += 0.1f;
         }
-
+        System.out.println("Severity of " + player.getDisplayName() + ": " + severity);
         return severity;
     }
 

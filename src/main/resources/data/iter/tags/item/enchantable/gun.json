@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "iter:goblin_handcannon"
+    "iter:gobsteel_rifle",
+    "iter:dwarven_revolver"
   ]
 }

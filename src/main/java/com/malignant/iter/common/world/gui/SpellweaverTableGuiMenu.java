@@ -41,7 +41,6 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
             this.z = pos.getZ();
         }
 
-        // Slot 0: spell to copy/upgrade
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 25, 35) {
             @Override
             public boolean mayPlace(ItemStack stack) {
@@ -49,7 +48,6 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
             }
         }));
 
-        // Slots 1-6: reagent slots (paper, ink, gist, catalysts)
         int[][] positions = {
                 {61, 26}, {79, 26}, {97, 26},
                 {97, 44}, {61, 44}, {79, 44}
@@ -59,7 +57,7 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
             this.customSlots.put(slotIdx, this.addSlot(new SlotItemHandler(internal, slotIdx, positions[i][0], positions[i][1])));
         }
 
-        // Slot 7: output slot (read-only)
+
         this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 133, 35) {
             @Override
             public boolean mayPlace(ItemStack stack) {
@@ -67,13 +65,12 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
             }
         }));
 
-        // Player inventory (slots 8-43)
         for (int si = 0; si < 3; ++si) {
             for (int sj = 0; sj < 9; ++sj) {
                 this.addSlot(new Slot(inv, sj + (si + 1) * 9, 8 + sj * 18, 84 + si * 18));
             }
         }
-        // Player hotbar (slots 44-53? Actually 9 slots)
+
         for (int si = 0; si < 9; ++si) {
             this.addSlot(new Slot(inv, si, 8 + si * 18, 142));
         }
@@ -81,7 +78,7 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
 
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return true; // Not bound to a block entity, always valid
+        return true;
     }
 
     @Override
@@ -93,15 +90,13 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
             itemstack = itemstack1.copy();
 
             if (index < 8) {
-                // Move from custom slots to player inventory
+
                 if (!this.moveItemStackTo(itemstack1, 8, this.slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
                 slot.onQuickCraft(itemstack1, itemstack);
             } else {
-                // Move from player inventory to custom slots if possible
                 if (!this.moveItemStackTo(itemstack1, 0, 8, false)) {
-                    // Move between main inventory and hotbar
                     if (index < 35) {
                         if (!this.moveItemStackTo(itemstack1, 35, 44, false)) {
                             return ItemStack.EMPTY;
@@ -132,7 +127,7 @@ public class SpellweaverTableGuiMenu extends AbstractContainerMenu implements Su
     @Override
     public void removed(@NotNull Player playerIn) {
         super.removed(playerIn);
-        // Drop any items left in custom slots when the container is closed (since no block entity)
+
         if (!playerIn.level().isClientSide && playerIn instanceof ServerPlayer) {
             for (int i = 0; i < internal.getSlots(); i++) {
                 ItemStack stack = internal.getStackInSlot(i);

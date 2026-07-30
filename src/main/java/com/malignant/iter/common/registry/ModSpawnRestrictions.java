@@ -1,10 +1,7 @@
 package com.malignant.iter.common.registry;
 
 import com.malignant.iter.IterMod;
-import com.malignant.iter.common.entity.BereftEntity;
-import com.malignant.iter.common.entity.DarkSorcererEntity;
-import com.malignant.iter.common.entity.GhoulEntity;
-import com.malignant.iter.common.entity.GiantSpiderEntity;
+import com.malignant.iter.common.entity.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -50,6 +47,14 @@ public class ModSpawnRestrictions {
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 GiantSpiderEntity::GiantSpiderSpawnRules,
+                RegisterSpawnPlacementsEvent.Operation.REPLACE
+        );
+
+        event.register(
+                ModEntities.THORNBACK.get(),
+                SpawnPlacementTypes.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ThornbackEntity::ThornbackSpawnRules,
                 RegisterSpawnPlacementsEvent.Operation.REPLACE
         );
     }

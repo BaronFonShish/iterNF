@@ -4,9 +4,8 @@ import com.malignant.iter.common.payload.SpellweaverTableExecutePayload;
 import com.malignant.iter.common.payload.SpellweaverTableSwitchPayload;
 import com.malignant.iter.common.registry.ModAtlas;
 import com.malignant.iter.common.variables.IterPlayerDataUtils;
+import com.malignant.iter.common.world.gui.widget.TextureButton;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -25,8 +24,8 @@ public class SpellweaverTableGuiScreen extends AbstractContainerScreen<Spellweav
     private final Level world;
     private final int x, y, z;
     private final Player player;
-    private ImageButton imagebutton_switch;
-    private ImageButton imagebutton_main;
+    private TextureButton imagebutton_switch;
+    private TextureButton imagebutton_main;
     private boolean SwitchState = false;
 
     private static final ResourceLocation TEXTURE = ResourceLocation.parse("iter:textures/gui/spellweaver_table_gui.png");
@@ -44,7 +43,6 @@ public class SpellweaverTableGuiScreen extends AbstractContainerScreen<Spellweav
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
 
         int areaX = this.leftPos + 153;
@@ -99,18 +97,19 @@ public class SpellweaverTableGuiScreen extends AbstractContainerScreen<Spellweav
         if (imagebutton_switch != null) removeWidget(imagebutton_switch);
         if (imagebutton_main != null) removeWidget(imagebutton_main);
 
-        WidgetSprites currentSwitchSprites = SwitchState ? ModAtlas.SPELLWEAVER_SWITCH_ON : ModAtlas.SPELLWEAVER_SWITCH_OFF;
-        imagebutton_switch = new ImageButton(
+        imagebutton_switch = new TextureButton(
                 this.leftPos + 43, this.topPos + 28, 16, 31,
-                currentSwitchSprites,
+                SwitchState ? ModAtlas.SPELLWEAVER_SWITCH_ON_NORMAL : ModAtlas.SPELLWEAVER_SWITCH_OFF_NORMAL,
+                SwitchState ? ModAtlas.SPELLWEAVER_SWITCH_ON_HOVER : ModAtlas.SPELLWEAVER_SWITCH_OFF_HOVER,
                 button -> {
                     PacketDistributor.sendToServer(new SpellweaverTableSwitchPayload(new BlockPos(x, y, z), !SwitchState));
                 }
         );
 
-        imagebutton_main = new ImageButton(
+        imagebutton_main = new TextureButton(
                 this.leftPos + 71, this.topPos + 64, 32, 16,
-                ModAtlas.SPELLWEAVER_WRITE,
+                ModAtlas.SPELLWEAVER_WRITE_NORMAL,
+                ModAtlas.SPELLWEAVER_WRITE_HOVER,
                 button -> PacketDistributor.sendToServer(new SpellweaverTableExecutePayload(new BlockPos(x, y, z)))
         );
 
@@ -121,11 +120,10 @@ public class SpellweaverTableGuiScreen extends AbstractContainerScreen<Spellweav
     private void updateSwitchButton() {
         if (imagebutton_switch != null) {
             removeWidget(imagebutton_switch);
-
-            WidgetSprites buttonsprites = SwitchState ? ModAtlas.SPELLWEAVER_SWITCH_ON : ModAtlas.SPELLWEAVER_SWITCH_OFF;
-            imagebutton_switch = new ImageButton(
+            imagebutton_switch = new TextureButton(
                     this.leftPos + 43, this.topPos + 28, 16, 31,
-                    buttonsprites,
+                    SwitchState ? ModAtlas.SPELLWEAVER_SWITCH_ON_NORMAL : ModAtlas.SPELLWEAVER_SWITCH_OFF_NORMAL,
+                    SwitchState ? ModAtlas.SPELLWEAVER_SWITCH_ON_HOVER : ModAtlas.SPELLWEAVER_SWITCH_OFF_HOVER,
                     button -> {
                         PacketDistributor.sendToServer(new SpellweaverTableSwitchPayload(new BlockPos(x, y, z), !SwitchState));
                     }

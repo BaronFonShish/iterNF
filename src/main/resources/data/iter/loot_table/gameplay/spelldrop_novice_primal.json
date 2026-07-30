@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "iter:spell_ignite",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "iter:spell_splashes",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "iter:spell_gust",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "iter:spell_fire_breath",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "iter:spell_frost_cone",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "iter:spell_geosense",
+          "weight": 10
+        }
+      ]
+    }
+  ]
+}

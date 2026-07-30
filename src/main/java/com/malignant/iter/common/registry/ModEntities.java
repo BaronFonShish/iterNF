@@ -21,7 +21,7 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<SpiderlingEntity>> SPIDERLING =
             ENTITY_TYPES.register("spiderling",
                     () -> EntityType.Builder.of(SpiderlingEntity::new, MobCategory.MONSTER)
-                            .sized(0.6f, 0.5f)
+                            .sized(0.6f, 0.5f).eyeHeight(0.35f)
                             .build("spiderling"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<GiantSpiderEntity>> GIANT_SPIDER =
@@ -30,11 +30,12 @@ public class ModEntities {
                             .sized(1.5f, 1.4f)
                             .build("giant_spider"));
 
-//    public static final DeferredHolder<EntityType<?>, EntityType<ThornbackEntity>> THORNBACK =
-//            ENTITY_TYPES.register("thornback",
-//                    () -> EntityType.Builder.of(ThornbackEntity::new, MobCategory.MONSTER)
-//                            .sized(1.9f, 2.25f)
-//                            .build("thornback"));
+    public static final DeferredHolder<EntityType<?>, EntityType<ThornbackEntity>> THORNBACK =
+            ENTITY_TYPES.register("thornback",
+                    () -> EntityType.Builder.of(ThornbackEntity::new, MobCategory.MONSTER)
+                            .setTrackingRange(64)
+                            .sized(2f, 2.25f).eyeHeight(1.5f)
+                            .build("thornback"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<GhoulEntity>> GHOUL =
             ENTITY_TYPES.register("ghoul",
